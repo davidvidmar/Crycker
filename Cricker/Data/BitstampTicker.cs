@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
-using Cricker.Data;
 using Cricker.Helper;
 
 namespace Cricker.Data

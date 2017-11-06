@@ -11,10 +11,10 @@ namespace Cricker.Types
         public DateTime LastUpdated;
         public decimal LastPrice;
 
-        public DateTime PreviousUpdate;
+        //public DateTime PreviousUpdate;
         public decimal PreviousPrice;
 
-        public decimal DeltaPrice;
-        public decimal DeltaPercent;
+        //public decimal DeltaPrice;
+        //public decimal DeltaPercent;
     }
 }
