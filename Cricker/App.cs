@@ -40,11 +40,13 @@ namespace Cricker
             contextMenuControl.SetCoin(Settings.Default.Coin);
             contextMenuControl.SetCurrency(Settings.Default.Currency);
             contextMenuControl.SetRefreshInterval(Settings.Default.RefreshInterval);
+            contextMenuControl.SetAutorun(AutoRunHelper.Get());
 
             contextMenuControl.CurrencyChanged += ContextMenuControl_CurrencyChanged;
             contextMenuControl.CoinChanged += ContextMenuControl_CoinChanged;
             contextMenuControl.ProviderChanged += ContextMenuControl_ProviderChanged;
             contextMenuControl.RefreshIntervalChanged += ContextMenuControl_RefreshIntervalChanged;
+            contextMenuControl.AutorunChanged += ContextMenuControl_AutorunChanged;
             contextMenuControl.ExitClicked += ContextMenuControl_ExitClicked;
 
             // Init Tray Icon
@@ -59,7 +61,22 @@ namespace Cricker
 
             TrayIcon.Visible = true;        
         }
-      
+
+        private void ContextMenuControl_AutorunChanged(object sender, EventArgs e)
+        {
+            var menu = sender as ToolStripMenuItem;
+            if (AutoRunHelper.Get())
+            {
+                AutoRunHelper.Clear();                
+                menu.Checked = false;
+            }
+            else
+            {
+                AutoRunHelper.Set();
+                menu.Checked = true;
+            }
+        }
+
         private void ContextMenuControl_ProviderChanged(object sender, StringEventArgs e)
         {
             // throw new NotImplementedException();
@@ -80,8 +97,6 @@ namespace Cricker
 
         private void ContextMenuControl_CurrencyChanged(object sender, StringEventArgs e)
         {
-            // throw new NotImplementedException();
-
             tickerController.SetCurrency(e.Value);
             tickerController.UpdateData();
 
@@ -100,7 +115,7 @@ namespace Cricker
 
         private void ContextMenuControl_ExitClicked(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you really want to exit?", "Are you sure?",
+            if (MessageBox.Show("Do you really want to exit?", "Cricker",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 Application.Exit();
@@ -109,7 +124,7 @@ namespace Cricker
 
         private void Application_ApplicationExit(object sender, EventArgs e)
         {
-            //Cleanup so that the icon will be removed when the application is closed
+            // Cleanup so that the icon will be removed when the application is closed
             TrayIcon.Visible = false;
         }
 

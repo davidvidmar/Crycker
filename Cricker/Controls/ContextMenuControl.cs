@@ -17,6 +17,8 @@ namespace Cricker.Controls
         public event EventHandler<StringEventArgs> CoinChanged = delegate { };
         public event EventHandler<StringEventArgs> CurrencyChanged = delegate { };
         public event EventHandler<StringEventArgs> ProviderChanged = delegate { };
+        public event EventHandler AutorunChanged = delegate { };
+
         public event EventHandler ExitClicked = delegate { };
 
         private void RefreshIntervalClick(object sender, EventArgs e)
@@ -64,6 +66,11 @@ namespace Cricker.Controls
             ProviderChanged(sender, new StringEventArgs(value));
         }
 
+        private void AutorunClick(object sender, EventArgs e)
+        {
+            AutorunChanged(sender, e);
+        }
+
         private void ExitClick(object sender, EventArgs e)
         {
             Logger.Info($"Exit menu clicked");
@@ -88,7 +95,12 @@ namespace Cricker.Controls
         public void SetRefreshInterval(int value)
         {
             SelectDropDownItem(refreshIntervalToolStripMenuItem, value.ToString());
-        }        
+        }
+
+        internal void SetAutorun(bool value)
+        {
+            autoRunToolStripMenuItem.Checked = value;
+        }
 
         private void SelectDropDownItem(ToolStripMenuItem toolStripMenuItem, string tagValue)
         {

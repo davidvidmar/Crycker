@@ -51,14 +51,14 @@
             this.minToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.minToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.hToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.startAutomaticallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.priceChangeNotificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.autoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,11 +72,11 @@
             this.refreshIntervalToolStripMenuItem,
             this.priceChangeNotificationToolStripMenuItem,
             this.toolStripSeparator1,
-            this.startAutomaticallyToolStripMenuItem,
+            this.autoRunToolStripMenuItem,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip";
-            this.contextMenu.Size = new System.Drawing.Size(207, 176);
+            this.contextMenu.Size = new System.Drawing.Size(207, 198);
             // 
             // providerToolStripMenuItem
             // 
@@ -264,30 +264,6 @@
             this.hToolStripMenuItem.Text = "1 h";
             this.hToolStripMenuItem.Click += new System.EventHandler(this.RefreshIntervalClick);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
-            // 
-            // startAutomaticallyToolStripMenuItem
-            // 
-            this.startAutomaticallyToolStripMenuItem.Enabled = false;
-            this.startAutomaticallyToolStripMenuItem.Name = "startAutomaticallyToolStripMenuItem";
-            this.startAutomaticallyToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.startAutomaticallyToolStripMenuItem.Text = "Run on Windows startup";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.exitToolStripMenuItem.Text = "&Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
-            // 
             // priceChangeNotificationToolStripMenuItem
             // 
             this.priceChangeNotificationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -301,20 +277,44 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem3.Text = "3%";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem4.Text = "5%";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem5.Text = "10%";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
+            // 
+            // autoRunToolStripMenuItem
+            // 
+            this.autoRunToolStripMenuItem.Name = "autoRunToolStripMenuItem";
+            this.autoRunToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.autoRunToolStripMenuItem.Text = "Run on Windows startup";
+            this.autoRunToolStripMenuItem.Click += new System.EventHandler(this.AutorunClick);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
             // 
             // ContextMenuControl
             // 
@@ -353,7 +353,7 @@
         private System.Windows.Forms.ToolStripMenuItem liteCoinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ethereumToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem startAutomaticallyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoRunToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem secToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem priceChangeNotificationToolStripMenuItem;
