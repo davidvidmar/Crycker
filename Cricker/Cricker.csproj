@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Data\BaseTickerProvider.cs" />
     <Compile Include="Data\BitstampTicker.cs" />
+    <Compile Include="Data\CoinbaseTicker.cs" />
     <Compile Include="Data\ITickerProvider.cs" />
     <Compile Include="Data\TickerController.cs" />
     <Compile Include="Controls\ContextMenuControl.cs">

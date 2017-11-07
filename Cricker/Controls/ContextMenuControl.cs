@@ -17,8 +17,8 @@ namespace Cricker.Controls
         public event EventHandler<StringEventArgs> CoinChanged = delegate { };
         public event EventHandler<StringEventArgs> CurrencyChanged = delegate { };
         public event EventHandler<StringEventArgs> ProviderChanged = delegate { };
-        public event EventHandler AutorunChanged = delegate { };
 
+        public event EventHandler AutorunChanged = delegate { };
         public event EventHandler ExitClicked = delegate { };
 
         private void RefreshIntervalClick(object sender, EventArgs e)
@@ -123,6 +123,11 @@ namespace Cricker.Controls
                                                 where !item.Equals(selectedMenuItem)
                                                 select ltoolStripMenuItem))
                 (ltoolStripMenuItem).Checked = false;            
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

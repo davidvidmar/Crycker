@@ -52,13 +52,14 @@
             this.minToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.hToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.priceChangeNotificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.autoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -206,7 +207,7 @@
             // secToolStripMenuItem
             // 
             this.secToolStripMenuItem.Name = "secToolStripMenuItem";
-            this.secToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.secToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.secToolStripMenuItem.Tag = "15";
             this.secToolStripMenuItem.Text = "15 sec";
             this.secToolStripMenuItem.Click += new System.EventHandler(this.RefreshIntervalClick);
@@ -214,7 +215,7 @@
             // minToolStripMenuItem
             // 
             this.minToolStripMenuItem.Name = "minToolStripMenuItem";
-            this.minToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.minToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.minToolStripMenuItem.Tag = "60";
             this.minToolStripMenuItem.Text = "1 min";
             this.minToolStripMenuItem.Click += new System.EventHandler(this.RefreshIntervalClick);
@@ -223,7 +224,7 @@
             // 
             this.minToolStripMenuItem1.CheckOnClick = true;
             this.minToolStripMenuItem1.Name = "minToolStripMenuItem1";
-            this.minToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+            this.minToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.minToolStripMenuItem1.Tag = "180";
             this.minToolStripMenuItem1.Text = "3 min";
             this.minToolStripMenuItem1.Click += new System.EventHandler(this.RefreshIntervalClick);
@@ -232,7 +233,7 @@
             // 
             this.minToolStripMenuItem2.CheckOnClick = true;
             this.minToolStripMenuItem2.Name = "minToolStripMenuItem2";
-            this.minToolStripMenuItem2.Size = new System.Drawing.Size(110, 22);
+            this.minToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.minToolStripMenuItem2.Tag = "300";
             this.minToolStripMenuItem2.Text = "5 min";
             this.minToolStripMenuItem2.Click += new System.EventHandler(this.RefreshIntervalClick);
@@ -241,7 +242,7 @@
             // 
             this.minToolStripMenuItem3.CheckOnClick = true;
             this.minToolStripMenuItem3.Name = "minToolStripMenuItem3";
-            this.minToolStripMenuItem3.Size = new System.Drawing.Size(110, 22);
+            this.minToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.minToolStripMenuItem3.Tag = "900";
             this.minToolStripMenuItem3.Text = "15 min";
             this.minToolStripMenuItem3.Click += new System.EventHandler(this.RefreshIntervalClick);
@@ -250,7 +251,7 @@
             // 
             this.minToolStripMenuItem4.CheckOnClick = true;
             this.minToolStripMenuItem4.Name = "minToolStripMenuItem4";
-            this.minToolStripMenuItem4.Size = new System.Drawing.Size(110, 22);
+            this.minToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.minToolStripMenuItem4.Tag = "1800";
             this.minToolStripMenuItem4.Text = "30 min";
             this.minToolStripMenuItem4.Click += new System.EventHandler(this.RefreshIntervalClick);
@@ -259,7 +260,7 @@
             // 
             this.hToolStripMenuItem.CheckOnClick = true;
             this.hToolStripMenuItem.Name = "hToolStripMenuItem";
-            this.hToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.hToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hToolStripMenuItem.Tag = "3600";
             this.hToolStripMenuItem.Text = "1 h";
             this.hToolStripMenuItem.Click += new System.EventHandler(this.RefreshIntervalClick);
@@ -267,30 +268,14 @@
             // priceChangeNotificationToolStripMenuItem
             // 
             this.priceChangeNotificationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem6,
             this.toolStripMenuItem3,
             this.toolStripMenuItem4,
             this.toolStripMenuItem5});
+            this.priceChangeNotificationToolStripMenuItem.Enabled = false;
             this.priceChangeNotificationToolStripMenuItem.Name = "priceChangeNotificationToolStripMenuItem";
             this.priceChangeNotificationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.priceChangeNotificationToolStripMenuItem.Text = "Price change notification";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(96, 22);
-            this.toolStripMenuItem3.Text = "3%";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(96, 22);
-            this.toolStripMenuItem4.Text = "5%";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(96, 22);
-            this.toolStripMenuItem5.Text = "10%";
             // 
             // toolStripSeparator1
             // 
@@ -315,6 +300,38 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem5.Tag = "10";
+            this.toolStripMenuItem5.Text = "10%";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem4.Tag = "5";
+            this.toolStripMenuItem4.Text = "5%";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Tag = "3";
+            this.toolStripMenuItem3.Text = "3%";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem6.Tag = "1";
+            this.toolStripMenuItem6.Text = "1%";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // ContextMenuControl
             // 
@@ -357,6 +374,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem secToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem priceChangeNotificationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;

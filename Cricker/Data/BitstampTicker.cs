@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Linq;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
@@ -8,63 +8,25 @@ using Cricker.Helper;
 
 namespace Cricker.Data
 {
-    public class BitstampTicker : ITickerProvider
+    public class BitstampTicker : BaseTickerProvider, ITickerProvider
     {
-        private static string[] supportedCurrencies = new string[] { "EUR", "USD" };
-        private static string[] supportedCoins = new string[] { "BTC" };
-
-        private string _coin = "BTC";
-        private string _currency = "EUR";
-
-        public DateTime LastUpdated { get; set; }
-        public decimal LastPrice { get; set; }
-
-        private string ServiceUrl
-        {
-            get {
-                return $"https://www.bitstamp.net/api/v2/ticker/{_coin}{_currency}/";
-            }
-        }
 
         public BitstampTicker()
         {
+            supportedCurrencies = new List<string>(new string[] { "EUR", "USD" });
+            supportedCoins = new List<string>(new string[] { "BTC" });
 
-        }
-
-        public string Currency
-        {
-            get { return _currency; }
-            set
-            {
-                var currencyValue = value.ToUpper();
-
-                if (supportedCurrencies.Contains(currencyValue))
-                {
-                    _currency = currencyValue;
-                }
-                else
-                {
-                    _currency = supportedCurrencies[0];
-                }
-            }
-        }
-
-        public string Coin
-        {
-            get { return _coin; }
-            set
-            {
-                var coinValue = value.ToUpper();
-
-                if (!supportedCoins.Contains(coinValue))
-                    throw new NotSupportedException($"Coin {coinValue} not supported.");
-
-                _currency = coinValue;
-            }
-        }
+            _currency = supportedCurrencies[0];
+            _coin = supportedCoins[0];
+        }        
 
         public string Provider {
             get { return "Bitstamp"; }
+        }
+
+        protected string BaseUrl
+        {
+            get { return $"https://www.bitstamp.net/api/v2/ticker/{_coin}{_currency}/"; }
         }
 
         public async Task UpdateData()
@@ -74,7 +36,7 @@ namespace Cricker.Data
             try
             {
                 var client = new HttpClient();
-                var jsonResult = await client.GetStringAsync(ServiceUrl);
+                var jsonResult = await client.GetStringAsync(BaseUrl);
                 var tickerData = JsonConvert.DeserializeObject<BitstampTickerData>(jsonResult);
 
                 LastUpdated = DateTime.Now;
@@ -90,7 +52,7 @@ namespace Cricker.Data
 
     }
 
-    public class BitstampTickerData
+    internal class BitstampTickerData
     {
         public decimal high { get; set; }
         public decimal last { get; set; }

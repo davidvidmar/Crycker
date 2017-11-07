@@ -39,11 +39,17 @@ namespace Cricker.Data
         {
             Logger.Info($"Controller initialized: {provider} - {coin} {currency}");
 
-            _ticker = new BitstampTicker
+            _ticker = new CoinbaseTicker
             {
                 Coin = coin,
                 Currency = currency
-            };            
+            };
+
+            //_ticker = new BitstampTicker
+            //{
+            //    Coin = coin,
+            //    Currency = currency
+            //};            
 
             _timer = new Timer();
             _timer.Elapsed += Timer_Elapsed;            
