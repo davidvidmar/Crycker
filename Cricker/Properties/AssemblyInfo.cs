@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cricker")]
-[assembly: AssemblyDescription("Crypto currency tray ticker")]
+[assembly: AssemblyTitle("Crycker")]
+[assembly: AssemblyDescription("Crypto currency ticker")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("David Vidmar")]
-[assembly: AssemblyProduct("Cricker")]
+[assembly: AssemblyProduct("Crycker")]
 [assembly: AssemblyCopyright("Copyright © David Vidmar 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

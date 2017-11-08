@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Cricker.Helper
+namespace Crycker.Helper
 {
     public static class Logger
     {

@@ -1,4 +1,4 @@
-# crycker
+# CRYKER
 **super simple CRYpto Currency tickER**
 
 Shows current price of BTC, EHT, XRP or other coins on your favorite exchange. Coinbase, Bitstamp and Blockhain are currently supported
@@ -7,18 +7,18 @@ Shows current price of BTC, EHT, XRP or other coins on your favorite exchange. C
 - Safe - no login, fully open source
 - Clean - Only on .exe file
 
-Download latest release: https://github.com/davidvidmar/cricker/releases
+Download latest release: https://github.com/davidvidmar/Crycker/releases
 
 ## Planning
 
 ### v0.2
 
-- [ ] rename to cryker (CRYpto Currency ticKER)
-- [ ] change github repo name
+- [X] rename to cryker (CRYpto Currency ticKER)
 - [ ] JSON parsing without JSON.net
-- [ ] logging without log4net
-- [ ] check for update - https://api.github.com/repos/davidvidmar/cricker/releases
+- [X] logging without log4net
+- [ ] check for update - https://api.github.com/repos/davidvidmar/Crycker/releases
 - [ ] double-click to open markets ticker
+- [ ] change github repo name
 
 ### v0.3
 

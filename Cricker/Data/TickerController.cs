@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Timers;
-using Cricker.Helper;
-using Cricker.Types;
+using Crycker.Helper;
+using Crycker.Types;
 
-namespace Cricker.Data
+namespace Crycker.Data
 {
     public class TickerController
     {

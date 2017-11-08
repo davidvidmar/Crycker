@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using Cricker.Controls;
-using Cricker.Data;
-using Cricker.Helper;
-using Cricker.Properties;
-using Cricker.Types;
+using Crycker.Controls;
+using Crycker.Data;
+using Crycker.Helper;
+using Crycker.Properties;
+using Crycker.Types;
 
-namespace Cricker
+namespace Crycker
 {
     class App : ApplicationContext
     {
@@ -116,7 +116,7 @@ namespace Cricker
 
         private void ContextMenuControl_ExitClicked(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you really want to exit?", "Cricker",
+            if (MessageBox.Show("Do you really want to exit?", "Crycker",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 Application.Exit();

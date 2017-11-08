@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Cricker.Data
+namespace Crycker.Data
 {
     interface ITickerProvider
     {

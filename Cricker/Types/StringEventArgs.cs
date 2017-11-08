@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cricker.Types
+namespace Crycker.Types
 {
     public class StringEventArgs : EventArgs
     {

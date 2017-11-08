@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Cricker.Helper
+namespace Crycker.Helper
 {
     public class AutoRunHelper
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Cricker.Data
+namespace Crycker.Data
 {
     public class BaseTickerProvider
     {

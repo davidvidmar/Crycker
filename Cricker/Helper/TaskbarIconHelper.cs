@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace Cricker.Helper
+namespace Crycker.Helper
 {
     static class TaskbarIconHelper
     {

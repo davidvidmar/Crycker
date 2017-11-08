@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{36BF981F-E6CD-445D-B4F2-29012002EB7A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Cricker</RootNamespace>
-    <AssemblyName>Cricker</AssemblyName>
+    <RootNamespace>Crycker</RootNamespace>
+    <AssemblyName>Crycker</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -1,4 +1,4 @@
-﻿namespace Cricker.Controls
+﻿namespace Crycker.Controls
 {
     partial class ContextMenuControl
     {

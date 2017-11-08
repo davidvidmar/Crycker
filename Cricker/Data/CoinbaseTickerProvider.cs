@@ -4,9 +4,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
-using Cricker.Helper;
+using Crycker.Helper;
 
-namespace Cricker.Data
+namespace Crycker.Data
 {
     class CoinbaseTickerProvider : BaseTickerProvider, ITickerProvider
     {

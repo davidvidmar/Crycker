@@ -1,11 +1,11 @@
-﻿using Cricker.Helper;
-using Cricker.Types;
+﻿using Crycker.Helper;
+using Crycker.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Cricker.Controls
+namespace Crycker.Controls
 {
     public partial class ContextMenuControl : UserControl
     {
