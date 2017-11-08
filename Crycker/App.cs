@@ -41,12 +41,13 @@ namespace Crycker
             contextMenuControl.SetRefreshInterval(Settings.Default.RefreshInterval);
             contextMenuControl.SetAutorun(AutoRunHelper.Get());
 
-            contextMenuControl.CurrencyChanged += ContextMenuControl_CurrencyChanged;
-            contextMenuControl.CoinChanged += ContextMenuControl_CoinChanged;
+            contextMenuControl.OpenUrlClicked += ContextMenuControl_OpenUrlClicked;
             contextMenuControl.ProviderChanged += ContextMenuControl_ProviderChanged;
+            contextMenuControl.CoinChanged += ContextMenuControl_CoinChanged;
+            contextMenuControl.CurrencyChanged += ContextMenuControl_CurrencyChanged;
             contextMenuControl.RefreshIntervalChanged += ContextMenuControl_RefreshIntervalChanged;
             contextMenuControl.AutorunChanged += ContextMenuControl_AutorunChanged;
-            contextMenuControl.ExitClicked += ContextMenuControl_ExitClicked;
+            contextMenuControl.ExitClicked += ContextMenuControl_ExitClicked;           
 
             // Init Tray Icon
             TrayIcon = new NotifyIcon
@@ -60,12 +61,14 @@ namespace Crycker
 
             TrayIcon.Visible = true;        
         }
-        
+
         private void ContextMenuControl_ProviderChanged(object sender, StringEventArgs e)
         {
             tickerController.SetProvider(e.Value);
+
             contextMenuControl.SetValidCurrencies(tickerController.SupportedCurrencies);
-            contextMenuControl.SetValidCoins(tickerController.SupportedCoins);
+            contextMenuControl.SetValidCoins(tickerController.SupportedCoins);            
+            
             tickerController.UpdateData();
 
             Settings.Default.Provider = e.Value;
@@ -99,6 +102,11 @@ namespace Crycker
             Settings.Default.Save();
         }
 
+        private void ContextMenuControl_OpenUrlClicked(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(tickerController.TickerUrl);
+        }
+
         private void ContextMenuControl_AutorunChanged(object sender, EventArgs e)
         {
             var menu = sender as ToolStripMenuItem;
@@ -124,8 +132,7 @@ namespace Crycker
         }
 
         private void Application_ApplicationExit(object sender, EventArgs e)
-        {
-            // Cleanup so that the icon will be removed when the application is closed
+        {            
             TrayIcon.Visible = false;
         }
 
@@ -138,8 +145,7 @@ namespace Crycker
 
         private void TrayIcon_DoubleClick(object sender, EventArgs e)
         {
-            // Here you can do stuff if the tray icon is doubleclicked
-            // TrayIcon.ShowBalloonTip(10000);
+            ContextMenuControl_OpenUrlClicked(sender, e);
         }
 
     }

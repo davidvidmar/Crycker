@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Crycker.Data
 {
     interface ITickerProvider
     {
+        string TickerUrl { get; }
+
         string Provider { get; }
         string Coin { get; set; }
         string Currency { get; set; }
@@ -15,7 +16,7 @@ namespace Crycker.Data
 
         string[] SupportedCurrencies { get; }
         string[] SupportedCoins { get; }
-
+        
         Task UpdateData();        
     }
 }

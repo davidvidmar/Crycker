@@ -19,7 +19,12 @@ namespace Crycker.Data
 
         public string Provider
         {
-            get { return "Coinbase"; }
+            get { return "Coinbase"; }            
+        }
+
+        public string TickerUrl
+        {
+            get { return "https://www.coinbase.com/charts"; }
         }
 
         protected string BaseUrl
@@ -39,7 +44,7 @@ namespace Crycker.Data
                 LastUpdated = DateTime.Now;
                 LastPrice = tickerData.data.amount;
 
-                Logger.Info($"Coinbase said {this.Coin} = {tickerData.data.amount} {tickerData.data.currency} @ {LastUpdated}");
+                Logger.Info($"{Provider} said {Coin} = {LastPrice} {Currency} @ {LastUpdated}");
             }
             catch (Exception ex)
             {

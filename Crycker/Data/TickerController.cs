@@ -17,15 +17,9 @@ namespace Crycker.Data
 
         public event EventHandler<TickerEventArgs> DataUpdated = delegate { };
 
-        public string[] SupportedCurrencies
-        {
-            get { return _ticker.SupportedCurrencies; }
-        }
-
-        public string[] SupportedCoins
-        {
-            get { return _ticker.SupportedCoins; }
-        }
+        public string[] SupportedCurrencies { get { return _ticker.SupportedCurrencies; } }
+        public string[] SupportedCoins { get { return _ticker.SupportedCoins; }  }    
+        public string TickerUrl { get { return _ticker.TickerUrl; } }
 
         public void SetProvider(string provider)
         {
@@ -43,6 +37,7 @@ namespace Crycker.Data
                 default:
                     throw new InvalidOperationException($"{provider} not supported.");
             }
+            lastPrice = 0;
         }
 
         public void SetCoin(string coin)
@@ -63,7 +58,7 @@ namespace Crycker.Data
             else
                 Logger.Error($"Coin {coin} not supported.");
 
-            //lastPrice = 0;            
+            lastPrice = 0;            
         }
 
         public void SetCurrency(string currency)
@@ -84,7 +79,7 @@ namespace Crycker.Data
             else
                 Logger.Error($"Currency {currency} not supported.");
 
-            //lastPrice = 0;            
+            lastPrice = 0;            
         }
 
         public void SetRefreshInterval(int value)
@@ -121,7 +116,7 @@ namespace Crycker.Data
                 Coin = _ticker.Coin,
                 Currency = _ticker.Currency,
                 LastPrice = _ticker.LastPrice,
-                PreviousPrice = lastPrice,
+                PreviousPrice = lastPrice == 0 ? _ticker.LastPrice : lastPrice,
                 LastUpdated = _ticker.LastUpdated
             });
 

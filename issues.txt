@@ -3,9 +3,9 @@
 
 Shows current price of BTC, EHT, XRP or other coins on your favorite exchange. Coinbase, Bitstamp and Blockhain are currently supported
 
-- Simple - 3 exchanges, few currencies
-- Safe - no login, fully open source
-- Clean - Only on .exe file
+- Simple - 3 exchanges, 2 currencies, all coins on those exchanges
+- Safe - no logging in, no data collected or stored, fully open source
+- Clean - only one .exe file
 
 Download latest release: https://github.com/davidvidmar/Crycker/releases
 
@@ -14,14 +14,21 @@ Download latest release: https://github.com/davidvidmar/Crycker/releases
 ### v0.2
 
 - [X] rename to cryker (CRYpto Currency ticKER)
-- [ ] JSON parsing without JSON.net
+- [X] JSON parsing without JSON.net
 - [X] logging without log4net
-- [ ] check for update - https://api.github.com/repos/davidvidmar/Crycker/releases
-- [ ] double-click to open markets ticker
-- [ ] change github repo name
+- [X] double-click to open markets ticker
+- [X] change github repo name
+
+**Bugs:**
+- [X] blockchain api url is not complete
+- [ ] switching provider that doesn't support current currency crashes the app
 
 ### v0.3
 
+- [ ] check for update - https://api.github.com/repos/davidvidmar/Crycker/releases
+- [ ] make it so the app can start without default .config file
+
+### v0.4
 - [ ] price absolute change notifications
 - [ ] price % change notifications
 

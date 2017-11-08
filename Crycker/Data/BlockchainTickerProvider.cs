@@ -22,9 +22,14 @@ namespace Crycker.Data
             get { return "Blockhain"; }
         }
 
+        public string TickerUrl
+        {
+            get { return "https://blockchain.info/charts/market-price?timespan=30days"; }
+        }
+
         protected string BaseUrl
         {
-            get { return $"https://www.blockchain.info/.../"; }
+            get { return $"https://blockchain.info/ticker"; }
         }
 
         public async Task UpdateData()
@@ -37,9 +42,17 @@ namespace Crycker.Data
                 var tickerData = ParseJsonResult<BlockchainTickerData>(result);
 
                 LastUpdated = DateTime.Now;
-                LastPrice = tickerData.last;
+                switch (Currency)
+                {
+                    case "EUR":
+                        LastPrice = tickerData.EUR.last;
+                        break;
+                    case "USD":
+                        LastPrice = tickerData.USD.last;
+                        break;
+                }
 
-                Logger.Info($"Blockhain said {this.Coin} = {tickerData.last} {this.Currency} @ {LastUpdated}");
+                Logger.Info($"{Provider} said {Coin} = {LastPrice} {Currency} @ {LastUpdated}");
             }
             catch (Exception ex)
             {
@@ -50,25 +63,64 @@ namespace Crycker.Data
     }
 
     [DataContract]
-    internal class BlockchainTickerData
+    public class CurrencyData
     {
-        [DataMember]
-        public decimal high { get; set; }
+        [DataMember(Name = "15m")]
+        public decimal _15m { get; set; }
         [DataMember]
         public decimal last { get; set; }
         [DataMember]
-        public string timestamp { get; set; }
+        public decimal buy { get; set; }
         [DataMember]
-        public decimal bid { get; set; }
+        public decimal sell { get; set; }
         [DataMember]
-        public string vwap { get; set; }
+        public string symbol { get; set; }
+    }
+
+    [DataContract]
+    public class BlockchainTickerData
+    {
         [DataMember]
-        public decimal volume { get; set; }
+        public CurrencyData USD { get; set; }
         [DataMember]
-        public decimal low { get; set; }
+        public CurrencyData JPY { get; set; }
         [DataMember]
-        public decimal ask { get; set; }
+        public CurrencyData CNY { get; set; }
         [DataMember]
-        public decimal open { get; set; }
+        public CurrencyData SGD { get; set; }
+        [DataMember]
+        public CurrencyData HKD { get; set; }
+        [DataMember]
+        public CurrencyData CAD { get; set; }
+        [DataMember]
+        public CurrencyData NZD { get; set; }
+        [DataMember]
+        public CurrencyData AUD { get; set; }
+        [DataMember]
+        public CurrencyData CLP { get; set; }
+        [DataMember]
+        public CurrencyData GBP { get; set; }
+        [DataMember]
+        public CurrencyData DKK { get; set; }
+        [DataMember]
+        public CurrencyData SEK { get; set; }
+        [DataMember]
+        public CurrencyData ISK { get; set; }
+        [DataMember]
+        public CurrencyData CHF { get; set; }
+        [DataMember]
+        public CurrencyData BRL { get; set; }
+        [DataMember]
+        public CurrencyData EUR { get; set; }
+        [DataMember]
+        public CurrencyData RUB { get; set; }
+        [DataMember]
+        public CurrencyData PLN { get; set; }
+        [DataMember]
+        public CurrencyData THB { get; set; }
+        [DataMember]
+        public CurrencyData KRW { get; set; }
+        [DataMember]
+        public CurrencyData TWD { get; set; }
     }
 }

@@ -14,10 +14,13 @@ namespace Crycker.Controls
             InitializeComponent();
         }
 
-        public event EventHandler<IntEventArgs> RefreshIntervalChanged = delegate { };
+        public event EventHandler OpenUrlClicked = delegate { };
+
+        public event EventHandler<StringEventArgs> ProviderChanged = delegate { };
         public event EventHandler<StringEventArgs> CoinChanged = delegate { };
         public event EventHandler<StringEventArgs> CurrencyChanged = delegate { };
-        public event EventHandler<StringEventArgs> ProviderChanged = delegate { };
+        
+        public event EventHandler<IntEventArgs> RefreshIntervalChanged = delegate { };
 
         public event EventHandler AutorunChanged = delegate { };
         public event EventHandler ExitClicked = delegate { };
@@ -78,6 +81,12 @@ namespace Crycker.Controls
             ExitClicked(sender, e);
         }
 
+        private void clickToOpenWebPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Logger.Info($"Open URL menu clicked");
+            OpenUrlClicked(sender, e);
+        }
+
         public void SetProvider(string value)
         {
             SelectDropDownItem(providerToolStripMenuItem, value);
@@ -127,7 +136,7 @@ namespace Crycker.Controls
             {
                 item.Checked = item.Tag.ToString() == tagValue;
             }            
-        }
+        }       
 
         private void UncheckOtherToolStripMenuItems(ToolStripMenuItem selectedMenuItem)
         {
@@ -147,6 +156,6 @@ namespace Crycker.Controls
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
 
-        }
+        }        
     }
 }

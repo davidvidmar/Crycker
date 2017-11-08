@@ -22,6 +22,11 @@ namespace Crycker.Data
             get { return "Bitstamp"; }
         }
 
+        public string TickerUrl
+        {
+            get { return "https://www.bitstamp.net/market/tradeview/"; }
+        }
+
         protected string BaseUrl
         {
             get { return $"https://www.bitstamp.net/api/v2/ticker/{_coin}{_currency}/"; }
@@ -39,13 +44,13 @@ namespace Crycker.Data
                 LastUpdated = DateTime.Now;
                 LastPrice = tickerData.last;
 
-                Logger.Info($"Bitstamp said {this.Coin} = {tickerData.last} {this.Currency} @ {LastUpdated}");
+                Logger.Info($"{Provider} said {Coin} = {LastPrice} {Currency} @ {LastUpdated}");
             }
             catch (Exception ex)
             {
                 Logger.Error("Error updating data.", ex);
             }
-        }        
+        }
     }
 
     [DataContract]

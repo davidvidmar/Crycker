@@ -36,12 +36,12 @@ namespace Crycker.Data
             }
         }
 
-        protected string _coin;
-        protected string _currency;
-
         public DateTime LastUpdated { get; set; }
         public decimal LastPrice { get; set; }
 
+        protected string _coin;
+        protected string _currency;
+        
         public string Currency
         {
             get { return _currency; }

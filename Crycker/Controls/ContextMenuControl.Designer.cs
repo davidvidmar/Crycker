@@ -60,12 +60,16 @@
             this.autoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clickToOpenWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenu
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clickToOpenWebPageToolStripMenuItem,
+            this.toolStripMenuItem2,
             this.providerToolStripMenuItem,
             this.coinToolStripMenuItem,
             this.currencyToolStripMenuItem,
@@ -77,7 +81,7 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip";
-            this.contextMenu.Size = new System.Drawing.Size(207, 198);
+            this.contextMenu.Size = new System.Drawing.Size(207, 226);
             // 
             // providerToolStripMenuItem
             // 
@@ -86,7 +90,7 @@
             this.coinBaseToolStripMenuItem,
             this.bitcoincomToolStripMenuItem});
             this.providerToolStripMenuItem.Name = "providerToolStripMenuItem";
-            this.providerToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.providerToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.providerToolStripMenuItem.Text = "&Provider";
             // 
             // bitstampToolStripMenuItem
@@ -121,7 +125,7 @@
             this.liteCoinToolStripMenuItem,
             this.ethereumToolStripMenuItem});
             this.coinToolStripMenuItem.Name = "coinToolStripMenuItem";
-            this.coinToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.coinToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.coinToolStripMenuItem.Text = "&Coin";
             // 
             // bTCToolStripMenuItem
@@ -129,7 +133,7 @@
             this.bTCToolStripMenuItem.Checked = true;
             this.bTCToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bTCToolStripMenuItem.Name = "bTCToolStripMenuItem";
-            this.bTCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bTCToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.bTCToolStripMenuItem.Tag = "BTC";
             this.bTCToolStripMenuItem.Text = "BTC";
             this.bTCToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -137,7 +141,7 @@
             // rippleToolStripMenuItem
             // 
             this.rippleToolStripMenuItem.Name = "rippleToolStripMenuItem";
-            this.rippleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rippleToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.rippleToolStripMenuItem.Tag = "XRP";
             this.rippleToolStripMenuItem.Text = "Ripple XRP";
             this.rippleToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -145,7 +149,7 @@
             // liteCoinToolStripMenuItem
             // 
             this.liteCoinToolStripMenuItem.Name = "liteCoinToolStripMenuItem";
-            this.liteCoinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.liteCoinToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.liteCoinToolStripMenuItem.Tag = "LTC";
             this.liteCoinToolStripMenuItem.Text = "Lite Coin";
             this.liteCoinToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -153,7 +157,7 @@
             // ethereumToolStripMenuItem
             // 
             this.ethereumToolStripMenuItem.Name = "ethereumToolStripMenuItem";
-            this.ethereumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ethereumToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.ethereumToolStripMenuItem.Tag = "ETH";
             this.ethereumToolStripMenuItem.Text = "Ethereum";
             this.ethereumToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -164,7 +168,7 @@
             this.eURToolStripMenuItem,
             this.uSDToolStripMenuItem});
             this.currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
-            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.currencyToolStripMenuItem.Text = "Cu&rrency";
             // 
             // eURToolStripMenuItem
@@ -186,7 +190,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(203, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(216, 6);
             // 
             // refreshIntervalToolStripMenuItem
             // 
@@ -199,7 +203,7 @@
             this.minToolStripMenuItem4,
             this.hToolStripMenuItem});
             this.refreshIntervalToolStripMenuItem.Name = "refreshIntervalToolStripMenuItem";
-            this.refreshIntervalToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.refreshIntervalToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.refreshIntervalToolStripMenuItem.Text = "Refresh &Interval";
             // 
             // secToolStripMenuItem
@@ -270,15 +274,15 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4,
             this.toolStripMenuItem5});
-            this.priceChangeNotificationToolStripMenuItem.Enabled = false;
             this.priceChangeNotificationToolStripMenuItem.Name = "priceChangeNotificationToolStripMenuItem";
-            this.priceChangeNotificationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.priceChangeNotificationToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.priceChangeNotificationToolStripMenuItem.Text = "Price change notification";
+            this.priceChangeNotificationToolStripMenuItem.Visible = false;
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(96, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem6.Tag = "1";
             this.toolStripMenuItem6.Text = "1%";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
@@ -286,7 +290,7 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(96, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem3.Tag = "3";
             this.toolStripMenuItem3.Text = "3%";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
@@ -294,7 +298,7 @@
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(96, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem4.Tag = "5";
             this.toolStripMenuItem4.Text = "5%";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
@@ -302,7 +306,7 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(96, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem5.Tag = "10";
             this.toolStripMenuItem5.Text = "10%";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
@@ -310,26 +314,39 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(216, 6);
             // 
             // autoRunToolStripMenuItem
             // 
             this.autoRunToolStripMenuItem.Name = "autoRunToolStripMenuItem";
-            this.autoRunToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.autoRunToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.autoRunToolStripMenuItem.Text = "Run on Windows startup";
             this.autoRunToolStripMenuItem.Click += new System.EventHandler(this.AutorunClick);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(216, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
+            // 
+            // clickToOpenWebPageToolStripMenuItem
+            // 
+            this.clickToOpenWebPageToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.clickToOpenWebPageToolStripMenuItem.Name = "clickToOpenWebPageToolStripMenuItem";
+            this.clickToOpenWebPageToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.clickToOpenWebPageToolStripMenuItem.Text = "Open ticker web page";
+            this.clickToOpenWebPageToolStripMenuItem.Click += new System.EventHandler(this.clickToOpenWebPageToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(216, 6);
             // 
             // ContextMenuControl
             // 
@@ -376,5 +393,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem clickToOpenWebPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }
