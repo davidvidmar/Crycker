@@ -46,7 +46,7 @@ namespace Cricker.Data
             }
             catch (Exception ex)
             {
-                Logger.Error(ex);
+                Logger.Error("Error updating data.", ex);
             }
         }
 
