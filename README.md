@@ -1,5 +1,5 @@
-# CRYKER
-**super simple CRYpto Currency tickER**
+# CRYCKER
+**super simple CRYpto Currency ticKER**
 
 Shows current price of BTC, EHT, XRP or other coins on your favorite exchange as Windows tray icon. Coinbase, Bitstamp and Blockhain are currently supported.
 
