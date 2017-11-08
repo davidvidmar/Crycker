@@ -1,33 +1,17 @@
 ﻿using System;
-using System.Diagnostics;
-
-using log4net;
+using System.IO;
 
 namespace Cricker.Helper
 {
     public static class Logger
     {
-        public static void Fatal(string message)
-        {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Fatal(message);
-        }
+        private static string logfile = "cryker-log.txt";
 
-        public static void Fatal(string message, params object[] args)
-        {
-            Fatal(string.Format(message, args));
-        }
-
-        public static void Fatal(string message, Exception ex)
-        {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Fatal(message, ex);
-        }
+        public static bool Enabled { get; set; }
 
         public static void Error(string message)
         {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Error(message);
+            Log("ERROR", message);
         }
 
         public static void Error(string message, params object[] args)
@@ -37,59 +21,47 @@ namespace Cricker.Helper
 
         public static void Error(string message, Exception ex)
         {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Error(message, ex);
+            Error($"{message} - {ex.Message}");
         }
 
         public static void Warning(string message)
         {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Warn(message);
+            Log("WARN", message);
         }
 
         public static void Warning(string message, params object[] args)
         {
-            Warning(string.Format(message, args));
+            Error(string.Format(message, args));
         }
 
         public static void Warning(string message, Exception ex)
         {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Warn(message, ex);
+            Error($"{message} - {ex.Message}");
         }
 
         public static void Info(string message)
-        {
-            //var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            //if (log.IsErrorEnabled) log.Info(message);
+        {            
+            Log("INFO", message);
         }
 
         public static void Info(string message, params object[] args)
         {
-            Info(string.Format(message, args));
+            Error(string.Format(message, args));
         }
 
         public static void Info(string message, Exception ex)
         {
-            //var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            //if (log.IsErrorEnabled) log.Info(message, ex);
+            Error($"{message} - {ex.Message}");
         }
 
-        public static void Debug(string message)
+        public static void Log(string level, string message)
         {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Debug(message);
-        }
+            var logText = $"{DateTime.Now.ToString("yyyy-mm-hh HH:mm:ss")} [{level}] {message}";
 
-        public static void Debug(string message, params object[] args)
-        {
-            Debug(string.Format(message, args));
-        }
+            System.Diagnostics.Debug.WriteLine(logText);
 
-        public static void Debug(string message, Exception ex)
-        {
-            var log = LogManager.GetLogger(new StackTrace().GetFrame(1).GetMethod().DeclaringType.FullName);
-            if (log.IsErrorEnabled) log.Debug(message, ex);
+            if (Enabled) 
+                File.AppendAllText(logfile, logText + Environment.NewLine);
         }
     }
 }
