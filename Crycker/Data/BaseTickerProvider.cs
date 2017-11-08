@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Crycker.Data
 {
@@ -77,6 +82,24 @@ namespace Crycker.Data
                     throw new NotSupportedException($"Coin {coinValue} not supported.");
                 }                              
             }
-        }        
+        }
+
+        protected async Task<string> CallRestApi(string baseUrl)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync(baseUrl);
+            var result = await response.Content.ReadAsStringAsync();
+            return result;
+        }
+
+        protected T ParseJsonResult<T>(string jsonData) where T : new()
+        {
+            var data = new T();
+            var serializer = new DataContractJsonSerializer(data.GetType());
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonData));
+            var tickerData = (T)serializer.ReadObject(ms);
+            ms.Close();
+            return tickerData;
+        }
     }
 }

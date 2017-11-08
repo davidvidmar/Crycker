@@ -1,48 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-using Newtonsoft.Json;
 using Crycker.Helper;
 
 namespace Crycker.Data
 {
-    public class BitstampTickerProvider : BaseTickerProvider, ITickerProvider
+    public class BlockchainTickerProvider : BaseTickerProvider, ITickerProvider
     {
-        public BitstampTickerProvider(string coin, string currency)
+        public BlockchainTickerProvider(string coin, string currency)
         {
             supportedCurrencies = new string[] { "EUR", "USD" };
-            supportedCoins = new string[] { "BTC", "XRP", "LTC", "ETH" };
+            supportedCoins = new string[] { "BTC" };
 
             Coin = coin;
             Currency = currency;
-        }
+        }        
 
         public string Provider
         {
-            get { return "Bitstamp"; }
+            get { return "Blockhain"; }
         }
 
         protected string BaseUrl
         {
-            get { return $"https://www.bitstamp.net/api/v2/ticker/{_coin}{_currency}/"; }
+            get { return $"https://www.blockchain.info/.../"; }
         }
 
         public async Task UpdateData()
         {
-            Logger.Info("Getting data from Bitstamp.");
+            Logger.Info("Getting data from Blockhain.");
 
             try
             {
-                var client = new HttpClient();
-                var jsonResult = await client.GetStringAsync(BaseUrl);
-                var tickerData = JsonConvert.DeserializeObject<BitstampTickerData>(jsonResult);
+                var result = await CallRestApi(BaseUrl);
+                var tickerData = ParseJsonResult<BlockchainTickerData>(result);
 
                 LastUpdated = DateTime.Now;
                 LastPrice = tickerData.last;
 
-                Logger.Info($"Bitstamp said {this.Coin} = {tickerData.last} {this.Currency} @ {LastUpdated}");
+                Logger.Info($"Blockhain said {this.Coin} = {tickerData.last} {this.Currency} @ {LastUpdated}");
             }
             catch (Exception ex)
             {
@@ -52,16 +49,26 @@ namespace Crycker.Data
 
     }
 
-    internal class BitstampTickerData
+    [DataContract]
+    internal class BlockchainTickerData
     {
+        [DataMember]
         public decimal high { get; set; }
+        [DataMember]
         public decimal last { get; set; }
+        [DataMember]
         public string timestamp { get; set; }
+        [DataMember]
         public decimal bid { get; set; }
+        [DataMember]
         public string vwap { get; set; }
+        [DataMember]
         public decimal volume { get; set; }
+        [DataMember]
         public decimal low { get; set; }
+        [DataMember]
         public decimal ask { get; set; }
+        [DataMember]
         public decimal open { get; set; }
     }
 }

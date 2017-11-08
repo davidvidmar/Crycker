@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-using Newtonsoft.Json;
 using Crycker.Helper;
 
 namespace Crycker.Data
@@ -35,9 +33,8 @@ namespace Crycker.Data
 
             try
             {
-                var client = new HttpClient();
-                var jsonResult = await client.GetStringAsync(BaseUrl);
-                var tickerData = JsonConvert.DeserializeObject<CoinbaseTickerData>(jsonResult);
+                var result = await CallRestApi(BaseUrl);
+                var tickerData = ParseJsonResult<CoinbaseTickerData>(result);
 
                 LastUpdated = DateTime.Now;
                 LastPrice = tickerData.data.amount;
@@ -51,14 +48,19 @@ namespace Crycker.Data
         }
     }
 
+    [DataContract]
     public class Data
     {
+        [DataMember]
         public decimal amount { get; set; }
+        [DataMember]
         public string currency { get; set; }
     }
 
+    [DataContract]
     public class CoinbaseTickerData
     {
+        [DataMember]
         public Data data { get; set; }
     }
 }
