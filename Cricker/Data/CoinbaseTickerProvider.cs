@@ -8,15 +8,15 @@ using Cricker.Helper;
 
 namespace Cricker.Data
 {
-    class CoinbaseTicker : BaseTickerProvider, ITickerProvider
+    class CoinbaseTickerProvider : BaseTickerProvider, ITickerProvider
     {
-        public CoinbaseTicker()
+        public CoinbaseTickerProvider(string coin, string currency)
         {
-            supportedCurrencies = new List<string>(new string[] { "EUR", "USD" });
-            supportedCoins = new List<string>(new string[] { "BTC" });
+            supportedCurrencies = new string[] { "EUR", "USD" };
+            supportedCoins = new string[] { "BTC", "LTH", "ETH" };
 
-            _currency = supportedCurrencies[0];
-            _coin = supportedCoins[0];
+            Coin = coin;
+            Currency = currency;
         }
 
         public string Provider

@@ -1,6 +1,7 @@
 ﻿using Cricker.Helper;
 using Cricker.Types;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -82,9 +83,27 @@ namespace Cricker.Controls
             SelectDropDownItem(providerToolStripMenuItem, value);
         }
 
+        internal void SetValidCoins(string[] supportedCoins)
+        {
+            var list = new List<string>(supportedCoins);
+            foreach (ToolStripMenuItem item in coinToolStripMenuItem.DropDownItems)
+            {
+                item.Enabled = list.Contains(item.Tag);
+            }
+        }
+
+        internal void SetValidCurrencies(string[] supportedCurrencies)
+        {
+            var list = new List<string>(supportedCurrencies);
+            foreach (ToolStripMenuItem item in currencyToolStripMenuItem.DropDownItems)
+            {
+                item.Enabled = list.Contains(item.Tag);
+            }
+        }
+
         public void SetCoin(string value)
         {
-            SelectDropDownItem(coinBaseToolStripMenuItem, value);
+            SelectDropDownItem(coinToolStripMenuItem, value);
         }
 
         public void SetCurrency(string value)

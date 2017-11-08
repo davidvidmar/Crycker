@@ -21,7 +21,6 @@ namespace Cricker
 
             InitializeComponent();
 
-            // Spin up Controller and Update data
             tickerController = new TickerController(Settings.Default.Provider, Settings.Default.Coin, Settings.Default.Currency, Settings.Default.RefreshInterval);
             tickerController.DataUpdated += C_DataUpdated;            
         }
@@ -61,25 +60,12 @@ namespace Cricker
 
             TrayIcon.Visible = true;        
         }
-
-        private void ContextMenuControl_AutorunChanged(object sender, EventArgs e)
-        {
-            var menu = sender as ToolStripMenuItem;
-            if (AutoRunHelper.Get())
-            {
-                AutoRunHelper.Clear();                
-                menu.Checked = false;
-            }
-            else
-            {
-                AutoRunHelper.Set();
-                menu.Checked = true;
-            }
-        }
-
+        
         private void ContextMenuControl_ProviderChanged(object sender, StringEventArgs e)
         {
-            // throw new NotImplementedException();
+            tickerController.SetProvider(e.Value);
+            contextMenuControl.SetValidCurrencies(tickerController.SupportedCurrencies);
+            contextMenuControl.SetValidCoins(tickerController.SupportedCoins);
             tickerController.UpdateData();
 
             Settings.Default.Provider = e.Value;
@@ -88,7 +74,7 @@ namespace Cricker
 
         private void ContextMenuControl_CoinChanged(object sender, StringEventArgs e)
         {
-            // throw new NotImplementedException();
+            tickerController.SetCoin(e.Value);            
             tickerController.UpdateData();
 
             Settings.Default.Coin = e.Value;
@@ -111,6 +97,21 @@ namespace Cricker
 
             Settings.Default.RefreshInterval = e.Value;
             Settings.Default.Save();
+        }
+
+        private void ContextMenuControl_AutorunChanged(object sender, EventArgs e)
+        {
+            var menu = sender as ToolStripMenuItem;
+            if (AutoRunHelper.Get())
+            {
+                AutoRunHelper.Clear();
+                menu.Checked = false;
+            }
+            else
+            {
+                AutoRunHelper.Set();
+                menu.Checked = true;
+            }
         }
 
         private void ContextMenuControl_ExitClicked(object sender, EventArgs e)

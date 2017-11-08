@@ -5,8 +5,31 @@ namespace Cricker.Data
 {
     public class BaseTickerProvider
     {
-        protected List<string> supportedCurrencies;
-        protected List<string> supportedCoins;
+        protected string[] supportedCurrencies;
+        public string[] SupportedCurrencies
+        {
+            get
+            {
+                return supportedCurrencies;
+            }
+            private set
+            {
+                supportedCurrencies = value;
+            }
+        }
+
+        protected string[] supportedCoins;
+        public string[] SupportedCoins
+        {
+            get
+            {
+                return supportedCoins;
+            }
+            private set
+            {
+                supportedCoins = value;
+            }
+        }
 
         protected string _coin;
         protected string _currency;
@@ -19,15 +42,18 @@ namespace Cricker.Data
             get { return _currency; }
             set
             {
+                if (value == null)
+                    return;
+
                 var currencyValue = value.ToUpper();
 
-                if (supportedCurrencies.Contains(currencyValue))
+                if (new List<string>(supportedCurrencies).Contains(currencyValue))
                 {
                     _currency = currencyValue;
                 }
                 else
                 {
-                    _currency = supportedCurrencies[0];
+                    throw new NotSupportedException($"Currency {currencyValue} not supported.");                    
                 }
             }
         }
@@ -37,13 +63,20 @@ namespace Cricker.Data
             get { return _coin; }
             set
             {
+                if (value == null)
+                    return;
+
                 var coinValue = value.ToUpper();
 
-                if (!supportedCoins.Contains(coinValue))
+                if (new List<string>(supportedCoins).Contains(coinValue))
+                {
+                    _coin = coinValue;
+                }
+                else
+                {
                     throw new NotSupportedException($"Coin {coinValue} not supported.");
-
-                _currency = coinValue;
+                }                              
             }
-        }
+        }        
     }
 }

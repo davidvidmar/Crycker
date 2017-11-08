@@ -8,41 +8,41 @@ using Cricker.Helper;
 
 namespace Cricker.Data
 {
-    public class BitstampTicker : BaseTickerProvider, ITickerProvider
+    public class BlockchainTickerProvider : BaseTickerProvider, ITickerProvider
     {
-
-        public BitstampTicker()
+        public BlockchainTickerProvider(string coin, string currency)
         {
-            supportedCurrencies = new List<string>(new string[] { "EUR", "USD" });
-            supportedCoins = new List<string>(new string[] { "BTC" });
+            supportedCurrencies = new string[] { "EUR", "USD" };
+            supportedCoins = new string[] { "BTC" };
 
-            _currency = supportedCurrencies[0];
-            _coin = supportedCoins[0];
+            Coin = coin;
+            Currency = currency;
         }        
 
-        public string Provider {
-            get { return "Bitstamp"; }
+        public string Provider
+        {
+            get { return "Blockhain"; }
         }
 
         protected string BaseUrl
         {
-            get { return $"https://www.bitstamp.net/api/v2/ticker/{_coin}{_currency}/"; }
+            get { return $"https://www.blockchain.info/.../"; }
         }
 
         public async Task UpdateData()
         {
-            Logger.Info("Getting data from Bitstamp.");
+            Logger.Info("Getting data from Blockhain.");
 
             try
             {
                 var client = new HttpClient();
                 var jsonResult = await client.GetStringAsync(BaseUrl);
-                var tickerData = JsonConvert.DeserializeObject<BitstampTickerData>(jsonResult);
+                var tickerData = JsonConvert.DeserializeObject<BlockchainTickerData>(jsonResult);
 
                 LastUpdated = DateTime.Now;
                 LastPrice = tickerData.last;
 
-                Logger.Info($"Bitstamp said {this.Coin} = {tickerData.last} {this.Currency} @ {LastUpdated}");
+                Logger.Info($"Blockhain said {this.Coin} = {tickerData.last} {this.Currency} @ {LastUpdated}");
             }
             catch (Exception ex)
             {
@@ -52,7 +52,7 @@ namespace Cricker.Data
 
     }
 
-    internal class BitstampTickerData
+    internal class BlockchainTickerData
     {
         public decimal high { get; set; }
         public decimal last { get; set; }
