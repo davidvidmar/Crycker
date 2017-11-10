@@ -58,7 +58,7 @@ namespace Crycker.Data
                 }
                 else
                 {
-                    throw new NotSupportedException($"Currency {currencyValue} not supported.");                    
+                    _currency = supportedCurrencies[0];
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace Crycker.Data
                 }
                 else
                 {
-                    throw new NotSupportedException($"Coin {coinValue} not supported.");
+                    _coin = supportedCoins[0];
                 }                              
             }
         }

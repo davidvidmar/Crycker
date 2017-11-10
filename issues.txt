@@ -3,9 +3,10 @@
 
 Shows current price of BTC, EHT, XRP or other coins on your favorite exchange. Coinbase, Bitstamp and Blockhain are currently supported
 
-- Simple - 3 exchanges, 2 currencies, all coins on those exchanges
-- Safe - no logging in, no data collected or stored, fully open source
-- Clean - only one .exe file
+- Handy - 3 exchanges, 2 currencies, all coins on those exchanges
+- Simple - only one .exe file, works out of the box
+- Clean - no login, no data collected and no data stored 
+- Safe - fully open source
 
 Download latest release: https://github.com/davidvidmar/Crycker/releases
 
@@ -21,22 +22,34 @@ Download latest release: https://github.com/davidvidmar/Crycker/releases
 
 **Bugs:**
 - [X] blockchain api url is not complete
-- [ ] switching provider that doesn't support current currency crashes the app
+- [X] switching provider that doesn't support current currency crashes the app
 
 ### v0.3
 
-- [ ] check for update - https://api.github.com/repos/davidvidmar/Crycker/releases
-- [ ] make it so the app can start without default .config file
+- [X] move config from settings for other (ini, xml, json?) file
+- [X] make it so the app can start without default .config file
 
-### v0.4
-- [ ] price absolute change notifications
-- [ ] price % change notifications
+**Bugs:**
+- [ ] switching provider doesn't always select currect coin and currency menu items
+- [?] setting coin sometimes doesn't work as expected, and you need to click twice
+- [ ] white font on light background - guess system color
+- [X] check if Segoe UI font exists
 
 ### v1.0
 
+- [ ] check for update - https://api.github.com/repos/davidvidmar/Crycker/releases
 - [ ] donate link
 - [ ] publish code on github
 
 ### v1.1
+- [ ] multiple coins in multiple icons
+- [ ] double icons for each coin
+
+### v1.2
+
+- [ ] price absolute change notifications
+- [ ] price % change notifications
+
+### v2.0
 
 - [ ] simple graph on single click, no stored data, just live

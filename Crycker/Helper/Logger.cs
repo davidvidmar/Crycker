@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Crycker.Settings;
+using System;
 using System.IO;
 
 namespace Crycker.Helper
@@ -8,6 +9,12 @@ namespace Crycker.Helper
         private static string logfile = "cryker-log.txt";
 
         public static bool Enabled { get; set; }
+
+        static Logger()
+        {
+            var settings = UserSettings.Load();
+            Enabled = settings.Log;
+        }
 
         public static void Error(string message)
         {

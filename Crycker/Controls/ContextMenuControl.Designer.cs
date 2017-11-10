@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.clickToOpenWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.providerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitstampToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coinBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,12 +58,14 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.autoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clickToOpenWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.iconsLookAndFeelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doubleWidthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,13 +79,28 @@
             this.currencyToolStripMenuItem,
             this.toolStripSeparator2,
             this.refreshIntervalToolStripMenuItem,
+            this.iconsLookAndFeelToolStripMenuItem,
             this.priceChangeNotificationToolStripMenuItem,
             this.toolStripSeparator1,
             this.autoRunToolStripMenuItem,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip";
-            this.contextMenu.Size = new System.Drawing.Size(207, 226);
+            this.contextMenu.Size = new System.Drawing.Size(207, 248);
+            this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
+            // 
+            // clickToOpenWebPageToolStripMenuItem
+            // 
+            this.clickToOpenWebPageToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.clickToOpenWebPageToolStripMenuItem.Name = "clickToOpenWebPageToolStripMenuItem";
+            this.clickToOpenWebPageToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.clickToOpenWebPageToolStripMenuItem.Text = "Open ticker web page";
+            this.clickToOpenWebPageToolStripMenuItem.Click += new System.EventHandler(this.clickToOpenWebPageToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(203, 6);
             // 
             // providerToolStripMenuItem
             // 
@@ -90,7 +109,7 @@
             this.coinBaseToolStripMenuItem,
             this.bitcoincomToolStripMenuItem});
             this.providerToolStripMenuItem.Name = "providerToolStripMenuItem";
-            this.providerToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.providerToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.providerToolStripMenuItem.Text = "&Provider";
             // 
             // bitstampToolStripMenuItem
@@ -125,7 +144,7 @@
             this.liteCoinToolStripMenuItem,
             this.ethereumToolStripMenuItem});
             this.coinToolStripMenuItem.Name = "coinToolStripMenuItem";
-            this.coinToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.coinToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.coinToolStripMenuItem.Text = "&Coin";
             // 
             // bTCToolStripMenuItem
@@ -168,7 +187,7 @@
             this.eURToolStripMenuItem,
             this.uSDToolStripMenuItem});
             this.currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
-            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.currencyToolStripMenuItem.Text = "Cu&rrency";
             // 
             // eURToolStripMenuItem
@@ -190,7 +209,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(216, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(203, 6);
             // 
             // refreshIntervalToolStripMenuItem
             // 
@@ -203,7 +222,7 @@
             this.minToolStripMenuItem4,
             this.hToolStripMenuItem});
             this.refreshIntervalToolStripMenuItem.Name = "refreshIntervalToolStripMenuItem";
-            this.refreshIntervalToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.refreshIntervalToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.refreshIntervalToolStripMenuItem.Text = "Refresh &Interval";
             // 
             // secToolStripMenuItem
@@ -273,9 +292,10 @@
             this.toolStripMenuItem6,
             this.toolStripMenuItem3,
             this.toolStripMenuItem4,
-            this.toolStripMenuItem5});
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem8});
             this.priceChangeNotificationToolStripMenuItem.Name = "priceChangeNotificationToolStripMenuItem";
-            this.priceChangeNotificationToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.priceChangeNotificationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.priceChangeNotificationToolStripMenuItem.Text = "Price change notification";
             this.priceChangeNotificationToolStripMenuItem.Visible = false;
             // 
@@ -311,42 +331,58 @@
             this.toolStripMenuItem5.Text = "10%";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem8.Text = "20%";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(216, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
             // 
             // autoRunToolStripMenuItem
             // 
             this.autoRunToolStripMenuItem.Name = "autoRunToolStripMenuItem";
-            this.autoRunToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.autoRunToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.autoRunToolStripMenuItem.Text = "Run on Windows startup";
             this.autoRunToolStripMenuItem.Click += new System.EventHandler(this.AutorunClick);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
             // 
-            // clickToOpenWebPageToolStripMenuItem
+            // iconsLookAndFeelToolStripMenuItem
             // 
-            this.clickToOpenWebPageToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.clickToOpenWebPageToolStripMenuItem.Name = "clickToOpenWebPageToolStripMenuItem";
-            this.clickToOpenWebPageToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.clickToOpenWebPageToolStripMenuItem.Text = "Open ticker web page";
-            this.clickToOpenWebPageToolStripMenuItem.Click += new System.EventHandler(this.clickToOpenWebPageToolStripMenuItem_Click);
+            this.iconsLookAndFeelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.darkModeToolStripMenuItem,
+            this.doubleWidthToolStripMenuItem});
+            this.iconsLookAndFeelToolStripMenuItem.Name = "iconsLookAndFeelToolStripMenuItem";
+            this.iconsLookAndFeelToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.iconsLookAndFeelToolStripMenuItem.Text = "Look and feel";
             // 
-            // toolStripMenuItem2
+            // darkModeToolStripMenuItem
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(216, 6);
+            this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.darkModeToolStripMenuItem.Text = "Dark Mode";
+            this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.darkModeToolStripMenuItem_Click);
+            // 
+            // doubleWidthToolStripMenuItem
+            // 
+            this.doubleWidthToolStripMenuItem.Enabled = false;
+            this.doubleWidthToolStripMenuItem.Name = "doubleWidthToolStripMenuItem";
+            this.doubleWidthToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.doubleWidthToolStripMenuItem.Text = "Double Width";
             // 
             // ContextMenuControl
             // 
@@ -395,5 +431,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem clickToOpenWebPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem iconsLookAndFeelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doubleWidthToolStripMenuItem;
     }
 }

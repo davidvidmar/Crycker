@@ -8,13 +8,10 @@ namespace Crycker.Data
 {
     public class BitstampTickerProvider : BaseTickerProvider, ITickerProvider
     {
-        public BitstampTickerProvider(string coin, string currency)
+        public BitstampTickerProvider() 
         {
             supportedCurrencies = new string[] { "EUR", "USD" };
-            supportedCoins = new string[] { "BTC", "XRP", "LTC", "ETH" };
-
-            Coin = coin;
-            Currency = currency;
+            supportedCoins = new string[] { "BTC", "XRP", "LTC", "ETH" };            
         }
 
         public string Provider

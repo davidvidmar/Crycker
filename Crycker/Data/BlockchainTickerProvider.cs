@@ -8,13 +8,10 @@ namespace Crycker.Data
 {
     public class BlockchainTickerProvider : BaseTickerProvider, ITickerProvider
     {
-        public BlockchainTickerProvider(string coin, string currency)
+        public BlockchainTickerProvider()
         {
             supportedCurrencies = new string[] { "EUR", "USD" };
             supportedCoins = new string[] { "BTC" };
-
-            Coin = coin;
-            Currency = currency;
         }        
 
         public string Provider

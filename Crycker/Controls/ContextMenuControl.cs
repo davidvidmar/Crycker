@@ -23,6 +23,7 @@ namespace Crycker.Controls
         public event EventHandler<IntEventArgs> RefreshIntervalChanged = delegate { };
 
         public event EventHandler AutorunChanged = delegate { };
+        public event EventHandler DarkModeChanged = delegate { };
         public event EventHandler ExitClicked = delegate { };
 
         private void RefreshIntervalClick(object sender, EventArgs e)
@@ -72,7 +73,14 @@ namespace Crycker.Controls
 
         private void AutorunClick(object sender, EventArgs e)
         {
+            Logger.Info($"Autorun menu clicked");
             AutorunChanged(sender, e);
+        }
+
+        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Logger.Info($"Dark mode menu clicked");
+            DarkModeChanged(sender, e);
         }
 
         private void ExitClick(object sender, EventArgs e)
@@ -124,6 +132,10 @@ namespace Crycker.Controls
         {
             SelectDropDownItem(refreshIntervalToolStripMenuItem, value.ToString());
         }
+        internal void SetDarkMode(bool value)
+        {
+            darkModeToolStripMenuItem.Checked = value;
+        }
 
         internal void SetAutorun(bool value)
         {
@@ -156,6 +168,12 @@ namespace Crycker.Controls
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
 
-        }        
+        }
+
+        private void contextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
     }
 }

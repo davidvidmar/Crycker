@@ -26,17 +26,19 @@ namespace Crycker.Data
             switch (provider.ToLower())
             {
                 case "bitstamp":
-                    _ticker = new BitstampTickerProvider(coin, currency);                                        
+                    _ticker = new BitstampTickerProvider();                    
                     break;
                 case "blockchain":
-                    _ticker = new BlockchainTickerProvider(coin, currency);
+                    _ticker = new BlockchainTickerProvider();
                     break;
                 case "coinbase":
-                    _ticker = new CoinbaseTickerProvider(coin, currency);
+                    _ticker = new CoinbaseTickerProvider();
                     break;
                 default:
                     throw new InvalidOperationException($"{provider} not supported.");
             }
+            SetCoin(coin);
+            SetCurrency(currency);
             lastPrice = 0;
         }
 
@@ -49,14 +51,6 @@ namespace Crycker.Data
                 return;
 
             _ticker.Coin = coin;
-
-            if (_ticker.Coin == coin)
-            {
-                Logger.Info($"Coin set to {coin}.");
-                this.coin = coin;
-            }
-            else
-                Logger.Error($"Coin {coin} not supported.");
 
             lastPrice = 0;            
         }
@@ -71,14 +65,6 @@ namespace Crycker.Data
 
             _ticker.Currency = currency;
 
-            if (_ticker.Currency == currency)
-            {
-                Logger.Info($"Currency set to {currency}.");
-                this.currency = currency;
-            }
-            else
-                Logger.Error($"Currency {currency} not supported.");
-
             lastPrice = 0;            
         }
 
@@ -92,9 +78,10 @@ namespace Crycker.Data
         {
             Logger.Info($"Controller initialized: {provider} - {coin} {currency}");
 
+            this.coin = coin;
+            this.currency = currency;
+
             SetProvider(provider);
-            SetCoin(coin);
-            SetCurrency(currency);
             
             _timer = new Timer();
             _timer.Elapsed += Timer_Elapsed;            
