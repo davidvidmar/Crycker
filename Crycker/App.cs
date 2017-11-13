@@ -15,11 +15,13 @@ namespace Crycker
         private ContextMenuControl contextMenuControl = new ContextMenuControl();
         private TickerController tickerController;
 
+        private UserSettings settings;
+
         public App()
         {
             Logger.Info("App starting...");
 
-            var settings = UserSettings.Load();
+            settings = UserSettings.Load();
 
             InitializeComponent(settings);
 
@@ -43,12 +45,13 @@ namespace Crycker
             contextMenuControl.SetRefreshInterval(settings.RefreshInterval);
             contextMenuControl.SetDarkMode(settings.DarkMode);
             contextMenuControl.SetAutorun(AutoRunHelper.Get());
-
+            contextMenuControl.SetHighlight(settings.Highlight);
             contextMenuControl.OpenUrlClicked += ContextMenuControl_OpenUrlClicked;
             contextMenuControl.ProviderChanged += ContextMenuControl_ProviderChanged;
             contextMenuControl.CoinChanged += ContextMenuControl_CoinChanged;
             contextMenuControl.CurrencyChanged += ContextMenuControl_CurrencyChanged;
             contextMenuControl.RefreshIntervalChanged += ContextMenuControl_RefreshIntervalChanged;
+            contextMenuControl.HighlightChanged += ContextMenuControl_HighlightChanged;
             contextMenuControl.DarkModeChanged += ContextMenuControl_DarkModeChanged;
             contextMenuControl.AutorunChanged += ContextMenuControl_AutorunChanged;
             contextMenuControl.ExitClicked += ContextMenuControl_ExitClicked;           
@@ -62,6 +65,7 @@ namespace Crycker
             TrayIcon.DoubleClick += TrayIcon_DoubleClick;
 
             TaskbarIconHelper.DarkMode = settings.DarkMode;
+            TaskbarIconHelper.Highlight = settings.Highlight;
             TaskbarIconHelper.notifyIcon = TrayIcon;
 
             TrayIcon.Visible = true;        
@@ -78,7 +82,7 @@ namespace Crycker
 
             var settings = UserSettings.Load();
             settings.Provider = e.Value;
-            settings.Save();            
+            settings.Save();
         }
 
         private void ContextMenuControl_CoinChanged(object sender, StringEventArgs e)
@@ -114,6 +118,20 @@ namespace Crycker
         private void ContextMenuControl_OpenUrlClicked(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(tickerController.TickerUrl);
+        }
+
+        private void ContextMenuControl_HighlightChanged(object sender, EventArgs e)
+        {
+            var menu = sender as ToolStripMenuItem;
+
+            var settings = UserSettings.Load();
+            settings.Highlight = !settings.Highlight;
+            settings.Save();
+
+            contextMenuControl.SetHighlight(settings.Highlight);
+            TaskbarIconHelper.Highlight = settings.Highlight;
+
+            tickerController.UpdateData();
         }
 
         private void ContextMenuControl_DarkModeChanged(object sender, EventArgs e)

@@ -9,6 +9,7 @@ namespace Crycker.Helper
     {
         public static NotifyIcon notifyIcon;
         public static bool DarkMode { get; set; }
+        public static bool Highlight { get; set; }
 
         private static string fontName;
 
@@ -23,7 +24,7 @@ namespace Crycker.Helper
             var percentChange = 0.0M;
             var brush = new SolidBrush(DarkMode ? Color.White : Color.Black);
 
-            if (lastPrice > 0)
+            if (lastPrice > 0 && Highlight)
             {
                 percentChange = (lastPrice - previousPrice) / lastPrice * 100;
                 Logger.Info($"Change since last: {percentChange:N2}%");

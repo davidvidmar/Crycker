@@ -12,6 +12,10 @@ namespace Crycker.Settings
         public string Coin { get; set; }
         public string Currency { get; set; }
         public int RefreshInterval { get; set; }
+
+        [DefaultValue(true)]
+        public bool Highlight { get; set; }
+        [DefaultValue(true)]
         public bool DarkMode { get; set; }
 
         [DefaultValue("Segoe UI")]
@@ -25,6 +29,8 @@ namespace Crycker.Settings
             Coin = "BTC";
             Currency = "EUR";
             RefreshInterval = 300;
+
+            Highlight = true;
             DarkMode = true;
 
             FontName = "Segoe UI";

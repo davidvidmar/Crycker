@@ -32,7 +32,6 @@ Download latest release: https://github.com/davidvidmar/Crycker/releases
 **Bugs:**
 - [ ] switching provider doesn't always select currect coin and currency menu items
 - [?] setting coin sometimes doesn't work as expected, and you need to click twice
-- [ ] white font on light background - guess system color
 - [X] check if Segoe UI font exists
 
 ### v1.0
