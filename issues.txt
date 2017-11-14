@@ -30,15 +30,17 @@ Download latest release: https://github.com/davidvidmar/Crycker/releases
 - [X] make it so the app can start without default .config file
 
 **Bugs:**
-- [ ] switching provider doesn't always select currect coin and currency menu items
 - [?] setting coin sometimes doesn't work as expected, and you need to click twice
 - [X] check if Segoe UI font exists
 
 ### v1.0
 
-- [ ] check for update - https://api.github.com/repos/davidvidmar/Crycker/releases
-- [ ] donate link
+- [X] check for update - https://api.github.com/repos/davidvidmar/Crycker/releases
+- [ ] donate link - 35aF5bLUa28AYEW22tVsRYbgEkBdyc9wzf
 - [ ] publish code on github
+
+**Bugs:**
+- [ ] switching provider doesn't always select currect coin and currency menu items
 
 ### v1.1
 - [ ] multiple coins in multiple icons

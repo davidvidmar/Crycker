@@ -84,21 +84,17 @@ namespace Crycker.Data
             }
         }
 
-        protected async Task<string> CallRestApi(string baseUrl)
+        protected async Task<Stream> CallRestApi(string baseUrl)
         {
             var client = new HttpClient();
-            var response = await client.GetAsync(baseUrl);
-            var result = await response.Content.ReadAsStringAsync();
-            return result;
+            var response = await client.GetStreamAsync(baseUrl);            
+            return response;
         }
 
-        protected T ParseJsonResult<T>(string jsonData) where T : new()
-        {
-            var data = new T();
-            var serializer = new DataContractJsonSerializer(data.GetType());
-            var ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonData));
-            var tickerData = (T)serializer.ReadObject(ms);
-            ms.Close();
+        protected T ParseJsonResult<T>(Stream jsonStream) where T : new()
+        {            
+            var serializer = new DataContractJsonSerializer(typeof(T));            
+            var tickerData = (T)serializer.ReadObject(jsonStream);            
             return tickerData;
         }
     }

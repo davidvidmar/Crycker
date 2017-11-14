@@ -15,17 +15,26 @@ namespace Crycker.Controls
         }
 
         public event EventHandler OpenUrlClicked = delegate { };
+        public event EventHandler<StringEventArgs> NewVersionAvailableClicked = delegate { };
 
         public event EventHandler<StringEventArgs> ProviderChanged = delegate { };
         public event EventHandler<StringEventArgs> CoinChanged = delegate { };
         public event EventHandler<StringEventArgs> CurrencyChanged = delegate { };
         
         public event EventHandler<IntEventArgs> RefreshIntervalChanged = delegate { };
-
+        
         public event EventHandler AutorunChanged = delegate { };
         public event EventHandler HighlightChanged = delegate { };
         public event EventHandler DarkModeChanged = delegate { };
         public event EventHandler ExitClicked = delegate { };
+
+
+        private void newVersionIsAvailableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var menu = sender as ToolStripMenuItem;
+            Logger.Info($"New version available clicked ({menu.Tag})");            
+            NewVersionAvailableClicked(sender, new StringEventArgs((string)menu.Tag));
+        }
 
         private void RefreshIntervalClick(object sender, EventArgs e)
         {
@@ -100,6 +109,14 @@ namespace Crycker.Controls
         {
             Logger.Info($"Open URL menu clicked");
             OpenUrlClicked(sender, e);
+        }
+
+        public void SetNewVersionAvailable(string version, string url)
+        {
+            Logger.Info($"New version {version} is available at {url}");
+            newVersionIsAvailableToolStripMenuItem.Text = $"Hey, lucky you! New version is available: v{version}";
+            newVersionIsAvailableToolStripMenuItem.Tag = url;
+            newVersionIsAvailableToolStripMenuItem.Visible = true;
         }
 
         public void SetProvider(string value)
@@ -177,5 +194,6 @@ namespace Crycker.Controls
                                                 select ltoolStripMenuItem))
                 (ltoolStripMenuItem).Checked = false;            
         }
+
     }
 }

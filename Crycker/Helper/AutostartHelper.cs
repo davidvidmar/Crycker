@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System.Reflection;
-using System.Windows.Forms;
 
 namespace Crycker.Helper
 {

@@ -16,6 +16,8 @@ namespace Crycker
         private TickerController tickerController;
 
         private UserSettings settings;
+        
+        private DateTime lastUpdateCheck;
 
         public App()
         {
@@ -26,12 +28,31 @@ namespace Crycker
             InitializeComponent(settings);
 
             tickerController = new TickerController(settings.Provider, settings.Coin, settings.Currency, settings.RefreshInterval);
-            tickerController.DataUpdated += C_DataUpdated;            
+            tickerController.DataUpdated += C_DataUpdated;
+            
         }
 
-        private void C_DataUpdated(object sender, TickerEventArgs e)
+        private async void C_DataUpdated(object sender, TickerEventArgs e)
         {
             TaskbarIconHelper.SetPrice(e.LastPrice, e.PreviousPrice, e.Coin, e.Currency, e.Provider, e.LastUpdated);
+
+            await CheckForUpdates();
+        }
+
+        private async System.Threading.Tasks.Task CheckForUpdates()
+        {
+            if (lastUpdateCheck != null && DateTime.Now.Subtract(lastUpdateCheck).Days > 1)
+            {
+                lastUpdateCheck = DateTime.Now;
+
+                var updateChecker = new CheckUpdatesHelper("davidvidmar", "Crycker");
+                var updateAvailable = await updateChecker.IsUpdateAvailable();
+
+                if (!String.IsNullOrEmpty(updateAvailable))
+                {
+                    contextMenuControl.SetNewVersionAvailable(updateAvailable, updateChecker.LatestVersionURL);
+                }
+            }
         }
 
         private void InitializeComponent(UserSettings settings)
@@ -46,7 +67,9 @@ namespace Crycker
             contextMenuControl.SetDarkMode(settings.DarkMode);
             contextMenuControl.SetAutorun(AutoRunHelper.Get());
             contextMenuControl.SetHighlight(settings.Highlight);
+
             contextMenuControl.OpenUrlClicked += ContextMenuControl_OpenUrlClicked;
+            contextMenuControl.NewVersionAvailableClicked += ContextMenuControl_NewVersionAvailableClicked;
             contextMenuControl.ProviderChanged += ContextMenuControl_ProviderChanged;
             contextMenuControl.CoinChanged += ContextMenuControl_CoinChanged;
             contextMenuControl.CurrencyChanged += ContextMenuControl_CurrencyChanged;
@@ -69,6 +92,17 @@ namespace Crycker
             TaskbarIconHelper.notifyIcon = TrayIcon;
 
             TrayIcon.Visible = true;        
+        }
+
+
+        private void ContextMenuControl_OpenUrlClicked(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(tickerController.TickerUrl);
+        }
+
+        private void ContextMenuControl_NewVersionAvailableClicked(object sender, StringEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Value);
         }
 
         private void ContextMenuControl_ProviderChanged(object sender, StringEventArgs e)
@@ -113,11 +147,6 @@ namespace Crycker
             var settings = UserSettings.Load();
             settings.RefreshInterval = e.Value;
             settings.Save();
-        }
-
-        private void ContextMenuControl_OpenUrlClicked(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start(tickerController.TickerUrl);
         }
 
         private void ContextMenuControl_HighlightChanged(object sender, EventArgs e)
