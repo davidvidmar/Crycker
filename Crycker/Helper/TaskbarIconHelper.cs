@@ -8,6 +8,7 @@ namespace Crycker.Helper
     static class TaskbarIconHelper
     {
         public static NotifyIcon notifyIcon;
+
         public static bool DarkMode { get; set; }
         public static bool Highlight { get; set; }
 
