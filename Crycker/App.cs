@@ -25,16 +25,19 @@ namespace Crycker
 
             settings = UserSettings.Load();
 
-            InitializeComponent(settings);
-
             tickerController = new TickerController(settings.Provider, settings.Coin, settings.Currency, settings.RefreshInterval);
             tickerController.DataUpdated += DataUpdated;
-            
+
+            InitializeComponent(settings);            
         }
 
         private async void DataUpdated(object sender, TickerEventArgs e)
         {
             TaskbarIconHelper.SetPrice(e.LastPrice, e.PreviousPrice, e.Coin, e.Currency, e.Provider, e.LastUpdated);
+
+            // when changing providers, coin and currency might change and we need to reflect that in UI
+            contextMenuControl.SetCoin(e.Coin);
+            contextMenuControl.SetCurrency(e.Currency);
 
             await CheckForUpdates();
         }
@@ -73,6 +76,8 @@ namespace Crycker
             contextMenuControl.SetProvider(settings.Provider);
             contextMenuControl.SetCoin(settings.Coin);
             contextMenuControl.SetCurrency(settings.Currency);
+            contextMenuControl.SetValidCurrencies(tickerController.SupportedCurrencies);
+            contextMenuControl.SetValidCoins(tickerController.SupportedCoins);
             contextMenuControl.SetRefreshInterval(settings.RefreshInterval);
             contextMenuControl.SetDarkMode(settings.DarkMode);
             contextMenuControl.SetAutorun(AutoRunHelper.Get());
@@ -88,7 +93,7 @@ namespace Crycker
             contextMenuControl.HighlightChanged += ContextMenuControl_HighlightChanged;
             contextMenuControl.DarkModeChanged += ContextMenuControl_DarkModeChanged;
             contextMenuControl.AutorunChanged += ContextMenuControl_AutorunChanged;
-            contextMenuControl.ExitClicked += ContextMenuControl_ExitClicked;           
+            contextMenuControl.ExitClicked += ContextMenuControl_ExitClicked;
 
             // Init Tray Icon
             TrayIcon = new NotifyIcon
@@ -122,9 +127,9 @@ namespace Crycker
             tickerController.SetProvider(e.Value);
 
             contextMenuControl.SetValidCurrencies(tickerController.SupportedCurrencies);
-            contextMenuControl.SetValidCoins(tickerController.SupportedCoins);            
+            contextMenuControl.SetValidCoins(tickerController.SupportedCoins);
             
-            tickerController.UpdateData();
+            tickerController.UpdateData();            
 
             var settings = UserSettings.Load();
             settings.Provider = e.Value;
