@@ -129,7 +129,7 @@ namespace Crycker.Controls
             var list = new List<string>(supportedCoins);
             foreach (ToolStripMenuItem item in coinToolStripMenuItem.DropDownItems)
             {
-                item.Enabled = list.Contains(item.Tag);
+                item.Visible = list.Contains(item.Tag);
             }
         }
 
@@ -138,7 +138,7 @@ namespace Crycker.Controls
             var list = new List<string>(supportedCurrencies);
             foreach (ToolStripMenuItem item in currencyToolStripMenuItem.DropDownItems)
             {
-                item.Enabled = list.Contains(item.Tag);
+                item.Visible = list.Contains(item.Tag);
             }
         }
 
