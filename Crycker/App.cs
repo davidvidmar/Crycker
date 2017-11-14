@@ -45,15 +45,23 @@ namespace Crycker
 
             if (lastUpdateCheck != null && DateTime.Now.Subtract(lastUpdateCheck).Days > 1)
             {
-                lastUpdateCheck = DateTime.Now;
-
-                var updateChecker = new CheckUpdatesHelper("davidvidmar", "Crycker");
-                var updateAvailable = await updateChecker.IsUpdateAvailable();
-
-                if (!String.IsNullOrEmpty(updateAvailable))
+                Logger.Info("Checking for updates.");
+                try
                 {
-                    contextMenuControl.SetNewVersionAvailable(updateAvailable, updateChecker.LatestVersionURL);
+                    var updateCheck = new UpdateCheckHelper("davidvidmar", "Crycker");
+                    var updateAvailable = await updateCheck.UpdateAvailable();
+
+                    if (!String.IsNullOrEmpty(updateAvailable))
+                    {
+                        Logger.Info($"Update is available: {updateAvailable}");
+                        contextMenuControl.SetNewVersionAvailable(updateAvailable, updateCheck.LatestVersionUrl);
+                    }
+                    lastUpdateCheck = DateTime.Now;
                 }
+                catch (Exception ex)
+                {
+                    Logger.Error($"Update check failed: {ex.Message}");
+                }                                
             }
         }
 

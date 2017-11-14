@@ -8,22 +8,26 @@ using System.Threading.Tasks;
 
 namespace Crycker.Helper
 {
-    public class CheckUpdatesHelper
+    public class UpdateCheckHelper
     {
         private string Owner { get; set; }
         private string Repo { get; set; }
 
-        public string LatestVersionURL { get; private set; }
-
-        public CheckUpdatesHelper(string owner, string repo)
+        public string LatestVersionUrl
         {
-            Owner = owner;
-            Repo = repo;
-
-            LatestVersionURL = $"https://github.com/{owner}/{repo}/releases/latest";
+            get
+            {
+                return $"https://github.com/{Owner}/{Repo}/releases/latest";
+            }
         }
 
-        public async Task<string> IsUpdateAvailable()
+        public UpdateCheckHelper(string owner, string repo)
+        {
+            Owner = owner;
+            Repo = repo;         
+        }
+
+        public async Task<string> UpdateAvailable()
         {
             try
             {
@@ -43,7 +47,7 @@ namespace Crycker.Helper
             {
                 Logger.Error("Update check failed", ex);
                 return null;
-            }            
+            }
         }
 
         private async Task<Version> GetLatestVersionFromGithub()
@@ -57,7 +61,7 @@ namespace Crycker.Helper
 
             var serializer = new DataContractJsonSerializer(typeof(GitHubRelease));
             var latestRelease = (GitHubRelease)serializer.ReadObject(jsonData);
-                                    
+
             var latestVersion = new Version(latestRelease.tag_name.Replace("v", ""));
 
             return latestVersion;

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.clickToOpenWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newVersionIsAvailableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.providerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitstampToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,7 @@
             this.autoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newVersionIsAvailableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +76,7 @@
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clickToOpenWebPageToolStripMenuItem,
+            this.donateToolStripMenuItem,
             this.newVersionIsAvailableToolStripMenuItem,
             this.toolStripMenuItem2,
             this.providerToolStripMenuItem,
@@ -89,7 +91,7 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip";
-            this.contextMenu.Size = new System.Drawing.Size(244, 270);
+            this.contextMenu.Size = new System.Drawing.Size(244, 292);
             // 
             // clickToOpenWebPageToolStripMenuItem
             // 
@@ -98,6 +100,16 @@
             this.clickToOpenWebPageToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.clickToOpenWebPageToolStripMenuItem.Text = "Open ticker web page";
             this.clickToOpenWebPageToolStripMenuItem.Click += new System.EventHandler(this.clickToOpenWebPageToolStripMenuItem_Click);
+            // 
+            // newVersionIsAvailableToolStripMenuItem
+            // 
+            this.newVersionIsAvailableToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.newVersionIsAvailableToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
+            this.newVersionIsAvailableToolStripMenuItem.Name = "newVersionIsAvailableToolStripMenuItem";
+            this.newVersionIsAvailableToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.newVersionIsAvailableToolStripMenuItem.Text = "Newer version is available! (??)";
+            this.newVersionIsAvailableToolStripMenuItem.Visible = false;
+            this.newVersionIsAvailableToolStripMenuItem.Click += new System.EventHandler(this.newVersionIsAvailableToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -392,15 +404,12 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
             // 
-            // newVersionIsAvailableToolStripMenuItem
+            // donateToolStripMenuItem
             // 
-            this.newVersionIsAvailableToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.newVersionIsAvailableToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
-            this.newVersionIsAvailableToolStripMenuItem.Name = "newVersionIsAvailableToolStripMenuItem";
-            this.newVersionIsAvailableToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.newVersionIsAvailableToolStripMenuItem.Text = "Newer version is available! (??)";
-            this.newVersionIsAvailableToolStripMenuItem.Visible = false;
-            this.newVersionIsAvailableToolStripMenuItem.Click += new System.EventHandler(this.newVersionIsAvailableToolStripMenuItem_Click);
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.donateToolStripMenuItem.Text = "Home page and donation link";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // ContextMenuControl
             // 
@@ -455,5 +464,6 @@
         private System.Windows.Forms.ToolStripMenuItem colorHighlightIconToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem newVersionIsAvailableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
     }
 }

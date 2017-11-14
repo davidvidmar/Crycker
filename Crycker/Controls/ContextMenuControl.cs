@@ -195,5 +195,9 @@ namespace Crycker.Controls
                 (ltoolStripMenuItem).Checked = false;            
         }
 
+        private void donateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://vidmar.net/crycker");
+        }
     }
 }
