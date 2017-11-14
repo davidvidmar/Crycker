@@ -17,7 +17,7 @@ Currently shows data from Bitstamp, Coinbase or Blockhain. Supports Bitcoin, Eth
 
 ![Crycker Settings](https://vidmar.net/img/projects/crycker-menu.png)
 
-**Download**    - [Version 1.1](https://github.com/davidvidmar/Crycker/releases/latest),
+**Download**    - [Version 1.1](https://github.com/davidvidmar/Crycker/releases/latest)
 
 **Home Page** - [Source Code](https://vidmar.net/Cryker/)
 
