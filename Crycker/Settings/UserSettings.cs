@@ -22,6 +22,8 @@ namespace Crycker.Settings
         public string FontName { get; set; }
         [DefaultValue(false)]
         public bool Log { get; set; }
+        [DefaultValue(true)]
+        public bool CheckForUpdates { get; set; }
 
         public UserSettings()
         {

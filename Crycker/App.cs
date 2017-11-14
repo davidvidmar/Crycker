@@ -28,11 +28,11 @@ namespace Crycker
             InitializeComponent(settings);
 
             tickerController = new TickerController(settings.Provider, settings.Coin, settings.Currency, settings.RefreshInterval);
-            tickerController.DataUpdated += C_DataUpdated;
+            tickerController.DataUpdated += DataUpdated;
             
         }
 
-        private async void C_DataUpdated(object sender, TickerEventArgs e)
+        private async void DataUpdated(object sender, TickerEventArgs e)
         {
             TaskbarIconHelper.SetPrice(e.LastPrice, e.PreviousPrice, e.Coin, e.Currency, e.Provider, e.LastUpdated);
 
@@ -41,6 +41,8 @@ namespace Crycker
 
         private async System.Threading.Tasks.Task CheckForUpdates()
         {
+            if (!settings.CheckForUpdates) return;
+
             if (lastUpdateCheck != null && DateTime.Now.Subtract(lastUpdateCheck).Days > 1)
             {
                 lastUpdateCheck = DateTime.Now;
@@ -59,7 +61,7 @@ namespace Crycker
         {
             Application.ApplicationExit += Application_ApplicationExit;
 
-            // Init Context Menu
+            // init Context Menu
             contextMenuControl.SetProvider(settings.Provider);
             contextMenuControl.SetCoin(settings.Coin);
             contextMenuControl.SetCurrency(settings.Currency);
@@ -68,6 +70,7 @@ namespace Crycker
             contextMenuControl.SetAutorun(AutoRunHelper.Get());
             contextMenuControl.SetHighlight(settings.Highlight);
 
+            // init Event fired from Context Menu
             contextMenuControl.OpenUrlClicked += ContextMenuControl_OpenUrlClicked;
             contextMenuControl.NewVersionAvailableClicked += ContextMenuControl_NewVersionAvailableClicked;
             contextMenuControl.ProviderChanged += ContextMenuControl_ProviderChanged;
@@ -84,12 +87,13 @@ namespace Crycker
             {
                 ContextMenuStrip = contextMenuControl.ContextMenuStrip
             };
-            TrayIcon.Click += TrayIcon_Click;
-            TrayIcon.DoubleClick += TrayIcon_DoubleClick;
-
+            
+            TaskbarIconHelper.notifyIcon = TrayIcon;
             TaskbarIconHelper.DarkMode = settings.DarkMode;
             TaskbarIconHelper.Highlight = settings.Highlight;
-            TaskbarIconHelper.notifyIcon = TrayIcon;
+
+            TrayIcon.Click += TrayIcon_Click;
+            TrayIcon.DoubleClick += TrayIcon_DoubleClick;
 
             TrayIcon.Visible = true;        
         }
@@ -208,8 +212,7 @@ namespace Crycker
 
         private void TrayIcon_Click(object sender, EventArgs e)
         {
-            // Here you can do stuff if the tray icon is clicked
-            // throw new NotImplementedException();
+            // TODO - show chart
         }
 
         private void TrayIcon_DoubleClick(object sender, EventArgs e)
