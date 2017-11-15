@@ -25,6 +25,12 @@ Have an idea?  Found a bug? [Leave feedback](mailto:crycker@vidmar.net) or [subm
 
 ---
 
-If you like Crycker, please donate BTC to "35aF5bLUa28AYEW22tVsRYbgEkBdyc9wzf" or use QR code:
+If you like Crycker, please donate! 
 
-![BTC donation address](https://vidmar.net/img/projects/donate-btc.png)
+**ETH** to "0x16c99026fc3251fa03e0372c496403ec4ffbd80d" or use code:
+
+![ETH donation address](/img/projects/donate-btc.png)
+
+**BTC** to "35aF5bLUa28AYEW22tVsRYbgEkBdyc9wzf" or use QR code:
+
+![BTC donation address](/img/projects/donate-btc.png)
