@@ -6,7 +6,7 @@ Here is a gift for you!
 
 > Crycker is a super simple tool that puts crypto currency price ticker into Windows tray.
 
-![Crycker in Windows 10 Taskbar](https://vidmar.net/img/projects/crycker-taskbar.png)
+![Crycker in Windows 10 Taskbar](https://vidmar.net/img/projects/crycker-taskbar.gif)
 
 Nothing to install, no dependancies. Just a single file you put in your tools folder and run when needed. Configure to automatically start 
 with Windows. Right click to select source, currency and coin.
