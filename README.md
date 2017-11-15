@@ -29,8 +29,8 @@ If you like Crycker, please donate!
 
 **ETH** to "0x16c99026fc3251fa03e0372c496403ec4ffbd80d" or use code:
 
-![ETH donation address](/img/projects/donate-btc.png)
+![ETH donation address](https://vidmar.net/img/projects/donate-btc.png)
 
 **BTC** to "35aF5bLUa28AYEW22tVsRYbgEkBdyc9wzf" or use QR code:
 
-![BTC donation address](/img/projects/donate-btc.png)
+![BTC donation address](https://vidmar.net/img/projects/donate-btc.png)
