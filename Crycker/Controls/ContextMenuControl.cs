@@ -183,16 +183,35 @@ namespace Crycker.Controls
         private void UncheckOtherToolStripMenuItems(ToolStripMenuItem selectedMenuItem)
         {
             selectedMenuItem.Checked = true;
-
             // Select the other MenuItens from the ParentMenu(OwnerItens) and unchecked this,
             // The current Linq Expression verify if the item is a real ToolStripMenuItem
-            // and if the item is a another ToolStripMenuItem to uncheck this.
-            foreach (var ltoolStripMenuItem in (from object item in selectedMenuItem.Owner.Items
-                                                let ltoolStripMenuItem = item as ToolStripMenuItem
-                                                where ltoolStripMenuItem != null
-                                                where !item.Equals(selectedMenuItem)
-                                                select ltoolStripMenuItem))
-                (ltoolStripMenuItem).Checked = false;            
+            // and if the item is a another ToolStripMenuItem to uncheck this.  
+            // It only looks for items inside the same separator zone.
+            ToolStripSeparator separator1 = null, separator2 = null;
+            bool itemFound = false;
+            foreach (ToolStripItem item in selectedMenuItem.Owner.Items)
+                if (item is ToolStripSeparator sep)
+                    if (itemFound)
+                    {
+                        separator2 = sep;
+                        break;
+                    }
+                    else
+                        separator1 = sep;
+                else if (item == selectedMenuItem)
+                    itemFound = true;
+
+            var e = selectedMenuItem.Owner.Items.GetEnumerator();
+            while (e.MoveNext())
+                if (separator1 == null || separator1 == e.Current && e.MoveNext())
+                    do
+                    {
+                        if (e.Current == separator2)
+                            return;
+
+                        if(e.Current != selectedMenuItem)
+                          ((ToolStripMenuItem)e.Current).Checked = false;
+                    } while (e.MoveNext());               
         }
 
         private void donateToolStripMenuItem_Click(object sender, EventArgs e)
