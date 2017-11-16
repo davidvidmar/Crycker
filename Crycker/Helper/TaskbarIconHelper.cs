@@ -33,6 +33,10 @@ namespace Crycker.Helper
                 {
                     Color priceColor = (percentChange >= 0) ? Color.Green : Color.OrangeRed;
                     brush = new SolidBrush(priceColor);
+                    var settings = Settings.UserSettings.Load();
+                    var absolutePercent = Math.Abs(percentChange);                    
+                    if (settings.PercentageNotification > 0 && absolutePercent > settings.PercentageNotification)
+                        notifyIcon.ShowBalloonTip(5000, "Crycker", $"{settings.Coin} {(percentChange > 0 ? "rose above" : "fell under")} {absolutePercent:N2}% in the last {settings.RefreshInterval} seconds!", ToolTipIcon.Info);
                 }
             }
 

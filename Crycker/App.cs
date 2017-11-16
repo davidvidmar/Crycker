@@ -79,6 +79,7 @@ namespace Crycker
             contextMenuControl.SetValidCurrencies(tickerController.SupportedCurrencies);
             contextMenuControl.SetValidCoins(tickerController.SupportedCoins);
             contextMenuControl.SetRefreshInterval(settings.RefreshInterval);
+            contextMenuControl.SetPercentageNotification(settings.PercentageNotification);
             contextMenuControl.SetDarkMode(settings.DarkMode);
             contextMenuControl.SetAutorun(AutoRunHelper.Get());
             contextMenuControl.SetHighlight(settings.Highlight);
@@ -90,6 +91,7 @@ namespace Crycker
             contextMenuControl.CoinChanged += ContextMenuControl_CoinChanged;
             contextMenuControl.CurrencyChanged += ContextMenuControl_CurrencyChanged;
             contextMenuControl.RefreshIntervalChanged += ContextMenuControl_RefreshIntervalChanged;
+            contextMenuControl.PercentageNotificationChanged += ContextMenuControl_PercentageNotificationChanged;
             contextMenuControl.HighlightChanged += ContextMenuControl_HighlightChanged;
             contextMenuControl.DarkModeChanged += ContextMenuControl_DarkModeChanged;
             contextMenuControl.AutorunChanged += ContextMenuControl_AutorunChanged;
@@ -163,6 +165,13 @@ namespace Crycker
 
             var settings = UserSettings.Load();
             settings.RefreshInterval = e.Value;
+            settings.Save();
+        }
+
+        private void ContextMenuControl_PercentageNotificationChanged(object sender, IntEventArgs e)
+        {
+            var settings = UserSettings.Load();
+            settings.PercentageNotification= e.Value;
             settings.Save();
         }
 

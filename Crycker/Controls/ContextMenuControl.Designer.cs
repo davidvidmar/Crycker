@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.clickToOpenWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newVersionIsAvailableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.providerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,15 +61,15 @@
             this.priceChangeNotificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorHighlightIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this._1perctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._3perctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._5perctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._10perctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.autoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +101,13 @@
             this.clickToOpenWebPageToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.clickToOpenWebPageToolStripMenuItem.Text = "Open ticker web page";
             this.clickToOpenWebPageToolStripMenuItem.Click += new System.EventHandler(this.clickToOpenWebPageToolStripMenuItem_Click);
+            // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.donateToolStripMenuItem.Text = "Home page and donation link";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // newVersionIsAvailableToolStripMenuItem
             // 
@@ -328,10 +336,11 @@
             this.priceChangeNotificationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorHighlightIconToolStripMenuItem,
             this.toolStripMenuItem7,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5});
+            this.disabledToolStripMenuItem,
+            this._1perctToolStripMenuItem,
+            this._3perctToolStripMenuItem,
+            this._5perctToolStripMenuItem,
+            this._10perctToolStripMenuItem});
             this.priceChangeNotificationToolStripMenuItem.Name = "priceChangeNotificationToolStripMenuItem";
             this.priceChangeNotificationToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.priceChangeNotificationToolStripMenuItem.Text = "Price change notification";
@@ -348,37 +357,37 @@
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
             // 
-            // toolStripMenuItem6
+            // _1perctToolStripMenuItem
             // 
-            this.toolStripMenuItem6.Enabled = false;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem6.Tag = "1";
-            this.toolStripMenuItem6.Text = "1%";
+            this._1perctToolStripMenuItem.Name = "_1perctToolStripMenuItem";
+            this._1perctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._1perctToolStripMenuItem.Tag = "1";
+            this._1perctToolStripMenuItem.Text = "1%";
+            this._1perctToolStripMenuItem.Click += new System.EventHandler(this.PercentageNotificationClick);
             // 
-            // toolStripMenuItem3
+            // _3perctToolStripMenuItem
             // 
-            this.toolStripMenuItem3.Enabled = false;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem3.Tag = "3";
-            this.toolStripMenuItem3.Text = "3%";
+            this._3perctToolStripMenuItem.Name = "_3perctToolStripMenuItem";
+            this._3perctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._3perctToolStripMenuItem.Tag = "3";
+            this._3perctToolStripMenuItem.Text = "3%";
+            this._3perctToolStripMenuItem.Click += new System.EventHandler(this.PercentageNotificationClick);
             // 
-            // toolStripMenuItem4
+            // _5perctToolStripMenuItem
             // 
-            this.toolStripMenuItem4.Enabled = false;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem4.Tag = "5";
-            this.toolStripMenuItem4.Text = "5%";
+            this._5perctToolStripMenuItem.Name = "_5perctToolStripMenuItem";
+            this._5perctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._5perctToolStripMenuItem.Tag = "5";
+            this._5perctToolStripMenuItem.Text = "5%";
+            this._5perctToolStripMenuItem.Click += new System.EventHandler(this.PercentageNotificationClick);
             // 
-            // toolStripMenuItem5
+            // _10perctToolStripMenuItem
             // 
-            this.toolStripMenuItem5.Enabled = false;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem5.Tag = "10";
-            this.toolStripMenuItem5.Text = "10%";
+            this._10perctToolStripMenuItem.Name = "_10perctToolStripMenuItem";
+            this._10perctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._10perctToolStripMenuItem.Tag = "10";
+            this._10perctToolStripMenuItem.Text = "10%";
+            this._10perctToolStripMenuItem.Click += new System.EventHandler(this.PercentageNotificationClick);
             // 
             // toolStripSeparator1
             // 
@@ -404,12 +413,13 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
             // 
-            // donateToolStripMenuItem
+            // disabledToolStripMenuItem
             // 
-            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
-            this.donateToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.donateToolStripMenuItem.Text = "Home page and donation link";
-            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
+            this.disabledToolStripMenuItem.Name = "disabledToolStripMenuItem";
+            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.disabledToolStripMenuItem.Tag = "0";
+            this.disabledToolStripMenuItem.Text = "Disabled";
+            this.disabledToolStripMenuItem.Click += new System.EventHandler(this.PercentageNotificationClick);
             // 
             // ContextMenuControl
             // 
@@ -452,10 +462,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem secToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem priceChangeNotificationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem _1perctToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem _3perctToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem _5perctToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem _10perctToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clickToOpenWebPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem iconsLookAndFeelToolStripMenuItem;
@@ -465,5 +475,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem newVersionIsAvailableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem;
     }
 }

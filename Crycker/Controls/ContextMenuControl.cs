@@ -22,7 +22,9 @@ namespace Crycker.Controls
         public event EventHandler<StringEventArgs> CurrencyChanged = delegate { };
         
         public event EventHandler<IntEventArgs> RefreshIntervalChanged = delegate { };
-        
+        public event EventHandler<IntEventArgs> PercentageNotificationChanged = delegate { };
+
+
         public event EventHandler AutorunChanged = delegate { };
         public event EventHandler HighlightChanged = delegate { };
         public event EventHandler DarkModeChanged = delegate { };
@@ -45,6 +47,17 @@ namespace Crycker.Controls
             Logger.Info($"Refresh Interval menu clicked -> {value}");
             
             RefreshIntervalChanged(sender, new IntEventArgs(value));
+        }
+
+        private void PercentageNotificationClick(object sender, EventArgs e)
+        {
+            var menu = sender as ToolStripMenuItem;
+            UncheckOtherToolStripMenuItems(menu);
+
+            var value = Convert.ToInt32(menu.Tag);
+            Logger.Info($"Percentage notification menu clicked -> {value}");
+
+            PercentageNotificationChanged(sender, new IntEventArgs(value));
         }
 
         private void CoinClick(object sender, EventArgs e)
@@ -155,6 +168,11 @@ namespace Crycker.Controls
         public void SetRefreshInterval(int value)
         {
             SelectDropDownItem(refreshIntervalToolStripMenuItem, value.ToString());
+        }
+
+        public void SetPercentageNotification(int value)
+        {
+            SelectDropDownItem(priceChangeNotificationToolStripMenuItem, value.ToString());
         }
 
         internal void SetHighlight(bool value)
