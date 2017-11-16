@@ -174,7 +174,7 @@ namespace Crycker.Controls
 
         private void SelectDropDownItem(ToolStripMenuItem toolStripMenuItem, string tagValue)
         {
-            foreach (ToolStripMenuItem item in toolStripMenuItem.DropDownItems)
+            foreach (var item in toolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>())
             {
                 item.Checked = item.Tag.ToString() == tagValue;
             }            
