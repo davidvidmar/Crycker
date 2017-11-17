@@ -1,12 +1,15 @@
-﻿using System.ComponentModel;
+﻿using Crycker.Helper;
+using System.ComponentModel;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace Crycker.Settings
 {
     public class UserSettings
     {
-        private const string SettingsConfig = @"Crycker.config";
+        private const string SettingsFile = @"Crycker.config";
+        private static string SettingsPathname; 
 
         public string Provider { get; set; }
         public string Coin { get; set; }
@@ -27,6 +30,9 @@ namespace Crycker.Settings
 
         public UserSettings()
         {
+            SettingsPathname = Path.Combine(Application.StartupPath, SettingsFile);
+            Logger.Info($"Settings file {SettingsPathname}");
+
             Provider = "Bitstamp";
             Coin = "BTC";
             Currency = "EUR";
@@ -43,9 +49,9 @@ namespace Crycker.Settings
         {
             var settings = new UserSettings();
 
-            if (!File.Exists(SettingsConfig)) return settings;
+            if (!File.Exists(SettingsPathname)) return settings;
 
-            var stream = new FileStream(SettingsConfig, FileMode.Open, FileAccess.Read, FileShare.Read);
+            var stream = new FileStream(SettingsPathname, FileMode.Open, FileAccess.Read, FileShare.Read);
 
             var xmlSerializer = new XmlSerializer(typeof(UserSettings));
             settings = (UserSettings)xmlSerializer.Deserialize(stream);
@@ -57,7 +63,7 @@ namespace Crycker.Settings
         public void Save()
         {
             var xmlSerializer = new XmlSerializer(typeof(UserSettings));
-            var stream = new StreamWriter(SettingsConfig);
+            var stream = new StreamWriter(SettingsPathname);
 
             xmlSerializer.Serialize(stream, this);
             stream.Close();
