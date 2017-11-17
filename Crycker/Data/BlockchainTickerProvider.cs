@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
-
+using System.Linq;
+using System.Reflection;
 using Crycker.Helper;
 
 namespace Crycker.Data
 {
     public class BlockchainTickerProvider : BaseTickerProvider, ITickerProvider
     {
+        private static readonly IEnumerable<PropertyInfo> currenciesProperties = typeof(BlockchainTickerData).GetProperties().Where(property => property.PropertyType == typeof(CurrencyData));
+
         public BlockchainTickerProvider()
         {
-            supportedCurrencies = new string[] { "EUR", "USD" };
+            supportedCurrencies = currenciesProperties.Select(property => property.Name).ToArray();
             supportedCoins = new string[] { "BTC" };
         }        
 
@@ -39,15 +43,7 @@ namespace Crycker.Data
                 var tickerData = ParseJsonResult<BlockchainTickerData>(result);
 
                 LastUpdated = DateTime.Now;
-                switch (Currency)
-                {
-                    case "EUR":
-                        LastPrice = tickerData.EUR.last;
-                        break;
-                    case "USD":
-                        LastPrice = tickerData.USD.last;
-                        break;
-                }
+                LastPrice = ((CurrencyData)currenciesProperties.Single(property => property.Name == Currency).GetValue(tickerData)).last;
 
                 Logger.Info($"{Provider} said {Coin} = {LastPrice} {Currency} @ {LastUpdated}");
             }
