@@ -17,11 +17,22 @@ Currently shows data from Bitstamp, Coinbase or Blockhain. Supports Bitcoin, Eth
 
 ![Crycker Settings](https://vidmar.net/img/projects/crycker-menu.png)
 
-**Download**    - [Version 1.1](https://github.com/davidvidmar/Crycker/releases/latest)
+**Download**    - [Version 1.0.1](https://github.com/davidvidmar/Crycker/releases/latest)
 
 **Home Page** - [Source Code](https://vidmar.net/Cryker/)
 
 Have an idea?  Found a bug? [Leave feedback](mailto:crycker@vidmar.net) or [submit an issue](https://github.com/davidvidmar/Crycker/issues)!
+
+---
+
+## Change log: ##
+
+**v1.0.1** - 7th Oct 2017 
+
+* support for generic currencies, that can be set in config file
+* read config file from directory where executable is, not from current working directory
+* Bitstamp sometimes returns bogus answer, ignore it
+* more robust logging, that could crash the app under certain conditions
 
 ---
 
