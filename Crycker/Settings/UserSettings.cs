@@ -43,6 +43,7 @@ namespace Crycker.Settings
 
             FontName = "Segoe UI";
             Log = false;
+            CheckForUpdates = true;
         }        
 
         public static UserSettings Load()
