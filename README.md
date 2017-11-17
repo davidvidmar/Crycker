@@ -29,6 +29,7 @@ Have an idea?  Found a bug? [Leave feedback](mailto:crycker@vidmar.net) or [subm
 
 **v1.0.1** - 7th Oct 2017 
 
+* check for updates automatically, can be turned off in config file
 * support for generic currencies, that can be set in config file
 * read config file from directory where executable is, not from current working directory
 * Bitstamp sometimes returns bogus answer, ignore it
