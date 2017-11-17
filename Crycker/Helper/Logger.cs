@@ -1,19 +1,37 @@
 ﻿using Crycker.Settings;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Crycker.Helper
 {
     public static class Logger
     {
-        private static string logfile = "cryker-log.txt";
+        private static string logFilename = "cryker-log.txt";
 
-        public static bool Enabled { get; set; }
+        private static bool _enabled;
+        public static bool Enabled {
+            get
+            {
+                return _enabled;
+            }
+            set
+            {
+                _enabled = value;
+                if (value) Debug.WriteLine($"Will log to {LogPathName()}");
+            }
+        }
+
+        private static string LogPathName()
+        {
+            return Path.Combine(Application.StartupPath, logFilename);
+        }
 
         static Logger()
         {
             var settings = UserSettings.Load();
-            Enabled = settings.Log;
+            Enabled = settings.Log;            
         }
 
         public static void Error(string message)
@@ -64,11 +82,18 @@ namespace Crycker.Helper
         public static void Log(string level, string message)
         {
             var logText = $"{DateTime.Now.ToString("yyyy-mm-hh HH:mm:ss")} [{level}] {message}";
+            
+            Debug.WriteLine(logText);
 
-            System.Diagnostics.Debug.WriteLine(logText);
-
-            if (Enabled) 
-                File.AppendAllText(logfile, logText + Environment.NewLine);
+            try
+            {
+                if (Enabled)
+                    File.AppendAllText(LogPathName(), logText + Environment.NewLine);
+            }
+            catch
+            {                
+                Debug.WriteLine($"Whaaaaat? Log cannot be written to {LogPathName()}.");
+            }
         }
     }
 }
