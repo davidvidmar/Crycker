@@ -3,6 +3,8 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 using Crycker.Helper;
+using System.IO;
+using System.Text;
 
 namespace Crycker.Data
 {
@@ -36,7 +38,20 @@ namespace Crycker.Data
             try
             {
                 var result = await CallRestApi(BaseUrl);
-                var tickerData = ParseJsonResult<BitstampTickerData>(result);
+                BitstampTickerData tickerData;
+                try
+                {
+                    tickerData = ParseJsonResult<BitstampTickerData>(result);
+                }
+                catch 
+                {
+                    result.Position = 0;
+                    using (StreamReader reader = new StreamReader(result, Encoding.UTF8))
+                    {
+                        Logger.Error(reader.ReadToEnd());
+                    }
+                    throw;
+                }
 
                 LastUpdated = DateTime.Now;
                 LastPrice = tickerData.last;
@@ -45,7 +60,8 @@ namespace Crycker.Data
             }
             catch (Exception ex)
             {
-                Logger.Error("Error updating data.", ex);
+                Logger.Error("Update data failed:", ex);
+                Logger.Error(ex.ToString());
             }
         }
     }
