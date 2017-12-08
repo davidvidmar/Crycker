@@ -81,7 +81,7 @@ namespace Crycker.Helper
 
         public static void Log(string level, string message)
         {
-            var logText = $"{DateTime.Now.ToString("yyyy-mm-hh HH:mm:ss")} [{level}] {message}";
+            var logText = $"{DateTime.Now.ToString("yyyy-MM-hh HH:mm:ss")} [{level}] {message}";
             
             Debug.WriteLine(logText);
 
