@@ -12,12 +12,17 @@ namespace Crycker.Helper
         public static bool DarkMode { get; set; }
         public static bool Highlight { get; set; }
 
-        private static string fontName;
+        private static readonly Font font;
 
         static TaskbarIconHelper()
         {
             var settings = Settings.UserSettings.Load();
-            fontName = settings.FontName;
+            font = new Font(settings.FontName, 7);
+            if (String.Compare(settings.FontName, font.Name, StringComparison.InvariantCultureIgnoreCase) != 0)
+            {
+                Logger.Warning($"Font '{settings.FontName}' not found, '{font.Name}' selected. Backing down to 'Tahoma'.");
+                font = new Font("Tahoma", 7);
+            }
         }
 
         public static void SetPrice(decimal lastPrice, decimal previousPrice, string coin, string currency, string provider, DateTime lastUpdated)
@@ -38,13 +43,6 @@ namespace Crycker.Helper
 
             var bitmap = new Bitmap(16, 16);
             var graphics = Graphics.FromImage(bitmap);
-            var font = new Font(fontName, 7);
-
-            if (String.Compare(fontName, font.Name, StringComparison.InvariantCultureIgnoreCase) != 0)
-            {
-                Logger.Warning($"Font '{fontName}' not found, '{font.Name}' selected. Backing down to 'Tahoma'.");
-                font = new Font("Tahoma", 7);
-            }
 
             // graphics.FillRectangle(Brushes.White, new Rectangle(0, 0, 16, 16));
 
