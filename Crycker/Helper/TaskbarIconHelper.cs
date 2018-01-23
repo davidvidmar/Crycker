@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Crycker.Helper
@@ -25,8 +26,14 @@ namespace Crycker.Helper
             }
         }
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern bool DestroyIcon(IntPtr handle);
+
+        private static IntPtr lastIcon;
+
         public static void SetPrice(decimal lastPrice, decimal previousPrice, string coin, string currency, string provider, DateTime lastUpdated)
         {
+            DestroyIcon(lastIcon);
             var percentChange = 0.0M;
             var brush = new SolidBrush(DarkMode ? Color.White : Color.Black);
 
@@ -86,9 +93,9 @@ namespace Crycker.Helper
                 h2 = (int)Math.Round(m.Height / 2);
                 graphics.DrawString(line2, font, brush, bitmap.Size.Width / 2 - w2, 5 + bitmap.Size.Height / 2 - h2);
 
-                var hIcon = bitmap.GetHicon();
-                var icon = Icon.FromHandle(hIcon);
-                notifyIcon.Icon = icon;
+                lastIcon = bitmap.GetHicon();
+                var icon = Icon.FromHandle(lastIcon);
+                notifyIcon.Icon = icon;                
             }
             brush.Dispose();
             notifyIcon.Text = $"{provider} {coin}/{currency}: {lastPrice} ({percentChange:N2}%) @ {lastUpdated.ToLongTimeString()}";
