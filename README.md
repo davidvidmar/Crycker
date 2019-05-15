@@ -13,7 +13,7 @@ with Windows. Right click to select source, currency and coin.
 
 <!-- ![Crycker](https://raw.githubusercontent.com/davidvidmar/Crycker/Cryker.png#floatright) -->
 
-Currently shows data from Bitstamp, Coinbase or Blockhain. Supports Bitcoin, Ethereum, Ripple, Lite Coin, with EUR and USD as currencies.
+Currently shows data from Bitstamp, Coinbase or Blockchain. Supports Bitcoin, Ethereum, Ripple, Lite Coin, with EUR and USD as currencies.
 
 ![Crycker Settings](https://vidmar.net/img/projects/crycker-menu.png)
 
