@@ -20,7 +20,7 @@ namespace Crycker.Data
 
         public string Provider
         {
-            get { return "Blockhain"; }
+            get { return "Blockchain"; }
         }
 
         public string TickerUrl
@@ -35,7 +35,7 @@ namespace Crycker.Data
 
         public async Task UpdateData()
         {
-            Logger.Info("Getting data from Blockhain.");
+            Logger.Info("Getting data from Blockchain.");
 
             try
             {
