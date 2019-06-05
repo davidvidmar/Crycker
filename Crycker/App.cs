@@ -191,8 +191,6 @@ namespace Crycker
 
         private void ContextMenuControl_DarkModeChanged(object sender, EventArgs e)
         {
-            var menu = sender as ToolStripMenuItem;
-
             var settings = UserSettings.Load();
             settings.DarkMode = !settings.DarkMode;
             settings.Save();
