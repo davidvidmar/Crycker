@@ -27,8 +27,11 @@ Have an idea?  Found a bug? [Leave feedback](mailto:crycker@vidmar.net) or [subm
 
 ## Change log: ##
 
-**v1.0.1** - 7th Oct 2017 
+**v1.1** - 6th Jun 2019 
+* get notifications for x% change
+* fixes and optimisations
 
+**v1.0.1** - 7th Oct 2017 
 * check for updates automatically, can be turned off in config file
 * support for generic currencies, that can be set in config file
 * read config file from directory where executable is, not from current working directory
