@@ -19,6 +19,8 @@ namespace Crycker
         
         private DateTime lastUpdateCheck;
 
+        private MiniChartForm chartForm = new MiniChartForm();
+
         public App()
         {
             Logger.Info("App starting...");
@@ -38,6 +40,8 @@ namespace Crycker
             // when changing providers, coin and currency might change and we need to reflect that in UI
             contextMenuControl.SetCoin(e.Coin);
             contextMenuControl.SetCurrency(e.Currency);
+
+            chartForm.Values.AddValue((double)e.LastPrice);
 
             await CheckForUpdates();
         }
@@ -234,7 +238,10 @@ namespace Crycker
 
         private void TrayIcon_Click(object sender, EventArgs e)
         {
-            // TODO - show chart
+            if (chartForm == null)
+                chartForm = new MiniChartForm();
+
+            chartForm.Show();
         }
 
         private void TrayIcon_DoubleClick(object sender, EventArgs e)
