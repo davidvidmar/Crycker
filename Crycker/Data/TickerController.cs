@@ -34,6 +34,9 @@ namespace Crycker.Data
                 case "coinbase":
                     _ticker = new CoinbaseTickerProvider();
                     break;
+                case "binance":
+                    _ticker = new BinanceTickerProvider();
+                    break;
                 default:
                     throw new InvalidOperationException($"{provider} not supported.");
             }

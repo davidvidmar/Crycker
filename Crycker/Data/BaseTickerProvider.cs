@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Crycker.Helper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
@@ -86,8 +87,17 @@ namespace Crycker.Data
 
         protected async Task<Stream> CallRestApi(string baseUrl)
         {
+            Stream response = null;
+            try { 
             var client = new HttpClient();
-            var response = await client.GetStreamAsync(baseUrl);            
+                response = await client.GetStreamAsync(baseUrl);
+                
+            }catch(Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                throw;
+            }
+
             return response;
         }
 

@@ -158,6 +158,14 @@
             this.bitcoincomToolStripMenuItem.Text = "Blockchain";
             this.bitcoincomToolStripMenuItem.Click += new System.EventHandler(this.ProviderClick);
             // 
+            // binanceToolStripMenuItem
+            // 
+            this.bitcoincomToolStripMenuItem.Name = "binanceToolStripMenuItem";
+            this.bitcoincomToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.bitcoincomToolStripMenuItem.Tag = "Binance";
+            this.bitcoincomToolStripMenuItem.Text = "Binance";
+            this.bitcoincomToolStripMenuItem.Click += new System.EventHandler(this.ProviderClick);
+            // 
             // coinToolStripMenuItem
             // 
             this.coinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -203,6 +211,14 @@
             this.ethereumToolStripMenuItem.Text = "Ethereum";
             this.ethereumToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
             // 
+            // binancecoinToolStripMenuItem
+            // 
+            this.ethereumToolStripMenuItem.Name = "binancecoinToolStripMenuItem";
+            this.ethereumToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.ethereumToolStripMenuItem.Tag = "BNB";
+            this.ethereumToolStripMenuItem.Text = "Binance Coin";
+            this.ethereumToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
+            // 
             // currencyToolStripMenuItem
             // 
             this.currencyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -226,6 +242,14 @@
             this.uSDToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.uSDToolStripMenuItem.Tag = "USD";
             this.uSDToolStripMenuItem.Text = "USD";
+            this.uSDToolStripMenuItem.Click += new System.EventHandler(this.CurrencyClick);
+            // 
+            // usdtToolStripMenuItem
+            // 
+            this.uSDToolStripMenuItem.Name = "usdtToolStripMenuItem";
+            this.uSDToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.uSDToolStripMenuItem.Tag = "USDT";
+            this.uSDToolStripMenuItem.Text = "USDT";
             this.uSDToolStripMenuItem.Click += new System.EventHandler(this.CurrencyClick);
             // 
             // toolStripSeparator2

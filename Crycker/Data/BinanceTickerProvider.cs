@@ -6,27 +6,27 @@ using Crycker.Helper;
 
 namespace Crycker.Data
 {
-    class CoinbaseTickerProvider : BaseTickerProvider, ITickerProvider
+    class BinanceTickerProvider : BaseTickerProvider, ITickerProvider
     {
-        public CoinbaseTickerProvider()
+        public BinanceTickerProvider()
         {
-            supportedCurrencies = new string[] { "EUR", "USD" };
-            supportedCoins = new string[] { "BTC", "LTH", "ETH" };
+            supportedCurrencies = new string[] { "EUR", "USDT" };
+            supportedCoins = new string[] { "BNB"};
         }
 
         public string Provider
         {
-            get { return "Coinbase"; }            
+            get { return "Binance"; }            
         }
 
         public string TickerUrl
         {
-            get { return "https://www.coinbase.com/charts"; }
+            get { return "https://api.binance.com/api/v3/ticker/price"; }
         }
 
         protected string BaseUrl
         {
-            get { return $"https://api.coinbase.com/v2/prices/{_coin}-{_currency}/spot"; }
+            get { return $"{TickerUrl}?symbol={_coin}{_currency}"; }
         }
 
         public async Task UpdateData()
@@ -36,10 +36,10 @@ namespace Crycker.Data
             try
             {
                 var result = await CallRestApi(BaseUrl);
-                var tickerData = ParseJsonResult<CoinbaseTickerData>(result);
+                var tickerData = ParseJsonResult<BinanceTickerData>(result);
 
                 LastUpdated = DateTime.Now;
-                LastPrice = tickerData.data.amount;
+                LastPrice = tickerData != null ? Decimal.Parse(tickerData.price) : 0;
 
                 Logger.Info($"{Provider} said {Coin} = {LastPrice} {Currency} @ {LastUpdated}");
             }
@@ -51,18 +51,11 @@ namespace Crycker.Data
     }
 
     [DataContract]
-    public class CoinbaseData
+    public class BinanceTickerData
     {
         [DataMember]
-        public decimal amount { get; set; }
+        public string price { get; set; }
         [DataMember]
-        public string currency { get; set; }
-    }
-
-    [DataContract]
-    public class CoinbaseTickerData
-    {
-        [DataMember]
-        public CoinbaseData data { get; set; }
+        public string symbol { get; set; }
     }
 }
