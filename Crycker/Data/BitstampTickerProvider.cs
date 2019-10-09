@@ -28,7 +28,7 @@ namespace Crycker.Data
 
         protected string BaseUrl
         {
-            get { return $"https://www.bitstamp.net/api/v2/ticker/{_coin}{_currency}/"; }
+            get { return $"https://www.bitstamp.net/api/v2/ticker/{_coin.ToLower()}{_currency.ToLower()}/"; }
         }
 
         public async Task UpdateData()
