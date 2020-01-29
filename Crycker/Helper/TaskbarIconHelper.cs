@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -18,14 +18,14 @@ namespace Crycker.Helper
         static TaskbarIconHelper()
         {
             var settings = Settings.UserSettings.Load();
-            font = new Font(settings.FontName, 7);
+            font = new Font(settings.FontName, 7, FontStyle.Bold);
             if (String.Compare(settings.FontName, font.Name, StringComparison.InvariantCultureIgnoreCase) != 0)
             {
                 Logger.Warning($"Font '{settings.FontName}' not found, '{font.Name}' selected. Backing down to 'Tahoma'.");
-                font = new Font("Tahoma", 7);
+                font = new Font("Tahoma", 7, FontStyle.Bold);
             }
         }
-
+        
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern bool DestroyIcon(IntPtr handle);
 
@@ -72,12 +72,12 @@ namespace Crycker.Helper
                     line1 = s[0];
                     line2 = s[1];
                 }
-                else if (lastPrice > 1000)
+                else if (lastPrice >= 1000)
                 {
                     var s = lastPrice.ToString("F0");
                     if (s.Length > 5) s = s.Substring(0, 6);
-                    line1 = s.Substring(0, s.Length / 2);
-                    line2 = s.Substring(s.Length / 2);
+                    line1 = s.Substring(0, s.Length - 3) + "k";
+                    line2 = s.Substring(s.Length - 3, 3);
                 }
                 else
                 {
@@ -89,8 +89,7 @@ namespace Crycker.Helper
                 var m = graphics.MeasureString(line1, font);
                 var w2 = (int)Math.Round(m.Width / 2);
                 var h2 = (int)Math.Round(m.Height / 2);
-
-                graphics.DrawString(line1, font, brush, bitmap.Size.Width / 2 - w2, -4 + bitmap.Size.Height / 2 - h2);
+                graphics.DrawString(line1, font, brush, bitmap.Size.Width / 2 - w2, -3 + bitmap.Size.Height / 2 - h2);
 
                 m = graphics.MeasureString(line2, font);
                 w2 = (int)Math.Round(m.Width / 2);
