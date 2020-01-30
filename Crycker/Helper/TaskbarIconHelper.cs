@@ -25,7 +25,6 @@ namespace Crycker.Helper
                 font = new Font("Tahoma", 7, FontStyle.Bold);
             }
         }
-        
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern bool DestroyIcon(IntPtr handle);
 
