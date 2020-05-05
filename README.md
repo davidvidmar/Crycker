@@ -27,7 +27,7 @@ Have an idea?  Found a bug? [Leave feedback](mailto:crycker@vidmar.net) or [subm
 
 ## Change log: ##
 
-**v1.1** - 6th Jun 2019 
+**v1.1** - 5th May 2020 
 * get notifications for x% change
 * fixes and optimisations
 
