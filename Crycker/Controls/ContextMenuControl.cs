@@ -94,6 +94,16 @@ namespace Crycker.Controls
             ProviderChanged(sender, new StringEventArgs(value));
         }
 
+        internal void SetCurrentVersion()
+        {
+            var updateCheck = new UpdateCheckHelper("davidvidmar", "Crycker");
+            var version = updateCheck.GetCurrentVersion();
+            var versionString = 
+                $"v{version.Major}.{version.Minor}" + 
+                (version.Build > 0 ? "." + version.Build + (version.Revision > 0 ? "." + version.Revision : "") : "");
+            versionToolStripMenuItem.Text = $"Crycker {versionString}";
+        }
+
         private void AutorunClick(object sender, EventArgs e)
         {
             Logger.Info($"Autorun menu clicked");

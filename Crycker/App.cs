@@ -83,6 +83,7 @@ namespace Crycker
             contextMenuControl.SetDarkMode(settings.DarkMode);
             contextMenuControl.SetAutorun(AutoRunHelper.Get());
             contextMenuControl.SetHighlight(settings.Highlight);
+            contextMenuControl.SetCurrentVersion();
 
             // init Event fired from Context Menu
             contextMenuControl.OpenUrlClicked += ContextMenuControl_OpenUrlClicked;

@@ -61,6 +61,7 @@
             this.priceChangeNotificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorHighlightIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._1perctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._3perctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._5perctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,16 +70,17 @@
             this.autoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenu
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clickToOpenWebPageToolStripMenuItem,
-            this.donateToolStripMenuItem,
+            this.versionToolStripMenuItem,
             this.newVersionIsAvailableToolStripMenuItem,
+            this.donateToolStripMenuItem,
+            this.clickToOpenWebPageToolStripMenuItem,
             this.toolStripMenuItem2,
             this.providerToolStripMenuItem,
             this.coinToolStripMenuItem,
@@ -92,7 +94,7 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip";
-            this.contextMenu.Size = new System.Drawing.Size(244, 292);
+            this.contextMenu.Size = new System.Drawing.Size(244, 314);
             // 
             // clickToOpenWebPageToolStripMenuItem
             // 
@@ -137,7 +139,7 @@
             // bitstampToolStripMenuItem
             // 
             this.bitstampToolStripMenuItem.Name = "bitstampToolStripMenuItem";
-            this.bitstampToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.bitstampToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.bitstampToolStripMenuItem.Tag = "Bitstamp";
             this.bitstampToolStripMenuItem.Text = "Bitstamp";
             this.bitstampToolStripMenuItem.Click += new System.EventHandler(this.ProviderClick);
@@ -145,7 +147,7 @@
             // coinBaseToolStripMenuItem
             // 
             this.coinBaseToolStripMenuItem.Name = "coinBaseToolStripMenuItem";
-            this.coinBaseToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.coinBaseToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.coinBaseToolStripMenuItem.Tag = "CoinBase";
             this.coinBaseToolStripMenuItem.Text = "CoinBase";
             this.coinBaseToolStripMenuItem.Click += new System.EventHandler(this.ProviderClick);
@@ -153,15 +155,7 @@
             // bitcoincomToolStripMenuItem
             // 
             this.bitcoincomToolStripMenuItem.Name = "bitcoincomToolStripMenuItem";
-            this.bitcoincomToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.bitcoincomToolStripMenuItem.Tag = "Blockchain";
-            this.bitcoincomToolStripMenuItem.Text = "Blockchain";
-            this.bitcoincomToolStripMenuItem.Click += new System.EventHandler(this.ProviderClick);
-            // 
-            // binanceToolStripMenuItem
-            // 
-            this.bitcoincomToolStripMenuItem.Name = "binanceToolStripMenuItem";
-            this.bitcoincomToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.bitcoincomToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.bitcoincomToolStripMenuItem.Tag = "Binance";
             this.bitcoincomToolStripMenuItem.Text = "Binance";
             this.bitcoincomToolStripMenuItem.Click += new System.EventHandler(this.ProviderClick);
@@ -182,7 +176,7 @@
             this.bTCToolStripMenuItem.Checked = true;
             this.bTCToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bTCToolStripMenuItem.Name = "bTCToolStripMenuItem";
-            this.bTCToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.bTCToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.bTCToolStripMenuItem.Tag = "BTC";
             this.bTCToolStripMenuItem.Text = "BTC";
             this.bTCToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -190,7 +184,7 @@
             // rippleToolStripMenuItem
             // 
             this.rippleToolStripMenuItem.Name = "rippleToolStripMenuItem";
-            this.rippleToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.rippleToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.rippleToolStripMenuItem.Tag = "XRP";
             this.rippleToolStripMenuItem.Text = "Ripple XRP";
             this.rippleToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -198,7 +192,7 @@
             // liteCoinToolStripMenuItem
             // 
             this.liteCoinToolStripMenuItem.Name = "liteCoinToolStripMenuItem";
-            this.liteCoinToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.liteCoinToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.liteCoinToolStripMenuItem.Tag = "LTC";
             this.liteCoinToolStripMenuItem.Text = "Lite Coin";
             this.liteCoinToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -206,15 +200,7 @@
             // ethereumToolStripMenuItem
             // 
             this.ethereumToolStripMenuItem.Name = "ethereumToolStripMenuItem";
-            this.ethereumToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.ethereumToolStripMenuItem.Tag = "ETH";
-            this.ethereumToolStripMenuItem.Text = "Ethereum";
-            this.ethereumToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
-            // 
-            // binancecoinToolStripMenuItem
-            // 
-            this.ethereumToolStripMenuItem.Name = "binancecoinToolStripMenuItem";
-            this.ethereumToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.ethereumToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.ethereumToolStripMenuItem.Tag = "BNB";
             this.ethereumToolStripMenuItem.Text = "Binance Coin";
             this.ethereumToolStripMenuItem.Click += new System.EventHandler(this.CoinClick);
@@ -231,7 +217,7 @@
             // eURToolStripMenuItem
             // 
             this.eURToolStripMenuItem.Name = "eURToolStripMenuItem";
-            this.eURToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.eURToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.eURToolStripMenuItem.Tag = "EUR";
             this.eURToolStripMenuItem.Text = "EUR";
             this.eURToolStripMenuItem.Click += new System.EventHandler(this.CurrencyClick);
@@ -239,15 +225,7 @@
             // uSDToolStripMenuItem
             // 
             this.uSDToolStripMenuItem.Name = "uSDToolStripMenuItem";
-            this.uSDToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
-            this.uSDToolStripMenuItem.Tag = "USD";
-            this.uSDToolStripMenuItem.Text = "USD";
-            this.uSDToolStripMenuItem.Click += new System.EventHandler(this.CurrencyClick);
-            // 
-            // usdtToolStripMenuItem
-            // 
-            this.uSDToolStripMenuItem.Name = "usdtToolStripMenuItem";
-            this.uSDToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.uSDToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.uSDToolStripMenuItem.Tag = "USDT";
             this.uSDToolStripMenuItem.Text = "USDT";
             this.uSDToolStripMenuItem.Click += new System.EventHandler(this.CurrencyClick);
@@ -381,6 +359,14 @@
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
             // 
+            // disabledToolStripMenuItem
+            // 
+            this.disabledToolStripMenuItem.Name = "disabledToolStripMenuItem";
+            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.disabledToolStripMenuItem.Tag = "0";
+            this.disabledToolStripMenuItem.Text = "Disabled";
+            this.disabledToolStripMenuItem.Click += new System.EventHandler(this.PercentageNotificationClick);
+            // 
             // _1perctToolStripMenuItem
             // 
             this._1perctToolStripMenuItem.Name = "_1perctToolStripMenuItem";
@@ -437,13 +423,12 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClick);
             // 
-            // disabledToolStripMenuItem
+            // versionToolStripMenuItem
             // 
-            this.disabledToolStripMenuItem.Name = "disabledToolStripMenuItem";
-            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.disabledToolStripMenuItem.Tag = "0";
-            this.disabledToolStripMenuItem.Text = "Disabled";
-            this.disabledToolStripMenuItem.Click += new System.EventHandler(this.PercentageNotificationClick);
+            this.versionToolStripMenuItem.Enabled = false;
+            this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.versionToolStripMenuItem.Text = "Crycker **version**";
             // 
             // ContextMenuControl
             // 
@@ -500,5 +485,6 @@
         private System.Windows.Forms.ToolStripMenuItem newVersionIsAvailableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
     }
 }

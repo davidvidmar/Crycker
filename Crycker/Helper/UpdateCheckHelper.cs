@@ -67,7 +67,7 @@ namespace Crycker.Helper
             return latestVersion;
         }
 
-        private Version GetCurrentVersion()
+        public Version GetCurrentVersion()
         {
             var assembly = Assembly.GetExecutingAssembly();
             var verionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
