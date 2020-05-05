@@ -16,7 +16,7 @@ namespace Crycker.Data
 
         public string Provider
         {
-            get { return "Binance"; }            
+            get { return "Binance"; }
         }
 
         public string TickerUrl
@@ -39,7 +39,8 @@ namespace Crycker.Data
                 var tickerData = ParseJsonResult<BinanceTickerData>(result);
 
                 LastUpdated = DateTime.Now;
-                LastPrice = tickerData != null ? Decimal.Parse(tickerData.price) : 0;
+
+                LastPrice = tickerData.price;
 
                 Logger.Info($"{Provider} said {Coin} = {LastPrice} {Currency} @ {LastUpdated}");
             }
@@ -54,7 +55,7 @@ namespace Crycker.Data
     public class BinanceTickerData
     {
         [DataMember]
-        public string price { get; set; }
+        public decimal price { get; set; }
         [DataMember]
         public string symbol { get; set; }
     }
