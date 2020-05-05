@@ -18,7 +18,7 @@ namespace Crycker.Helper
         static TaskbarIconHelper()
         {
             var settings = Settings.UserSettings.Load();
-            font = new Font(settings.FontName, 7, FontStyle.Bold);
+            font = new Font(settings.FontName, settings.FontSize, settings.FontStyleBold ? FontStyle.Bold : FontStyle.Regular);
             if (String.Compare(settings.FontName, font.Name, StringComparison.InvariantCultureIgnoreCase) != 0)
             {
                 Logger.Warning($"Font '{settings.FontName}' not found, '{font.Name}' selected. Backing down to 'Tahoma'.");
