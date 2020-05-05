@@ -17,7 +17,7 @@ Currently shows data from Bitstamp, Coinbase or Blockchain. Supports Bitcoin, Et
 
 ![Crycker Settings](https://vidmar.net/img/projects/crycker-menu.png)
 
-**Download**    - [Version 1.0.1](https://github.com/davidvidmar/Crycker/releases/latest)
+**Download**    - [Version 1.1](https://github.com/davidvidmar/Crycker/releases/latest)
 
 **Home Page** - [Source Code](https://vidmar.net/Cryker/)
 
@@ -46,6 +46,6 @@ If you like Crycker, please donate!
 
 ![ETH donation address](https://vidmar.net/img/projects/donate-eth.png)
 
-**BTC** to "35aF5bLUa28AYEW22tVsRYbgEkBdyc9wzf" or use QR code:
+**BTC** to "38ArB8CxXf4tQ3qccXoNYXmdkRqMrEGcpN" or use QR code:
 
 ![BTC donation address](https://vidmar.net/img/projects/donate-btc.png)
