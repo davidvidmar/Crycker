@@ -50,6 +50,9 @@ namespace Crycker.Settings
             DarkMode = true;
 
             FontName = "Segoe UI";
+            FontSize = 7;
+            FontStyleBold = true;
+
             Log = false;
             CheckForUpdates = true;
         }        
