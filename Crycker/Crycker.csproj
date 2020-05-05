@@ -52,6 +52,7 @@
     <Compile Include="Data\BaseTickerProvider.cs" />
     <Compile Include="Data\BitstampTickerProvider.cs" />
     <Compile Include="Data\BlockchainTickerProvider.cs" />
+    <Compile Include="Data\BinanceTickerProvider.cs" />
     <Compile Include="Data\CoinbaseTickerProvider.cs" />
     <Compile Include="Data\ITickerProvider.cs" />
     <Compile Include="Data\TickerController.cs" />
