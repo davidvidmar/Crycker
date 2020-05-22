@@ -1,5 +1,10 @@
 # CRYCKER
 
+![Maintenance](https://img.shields.io/maintenance/yes/2020?style=for-the-badge) <!--
+![GitHub Release Date](https://img.shields.io/github/release-date/davidvidmar/crycker?style=for-the-badge)
+--> ![GitHub Releases (by Release)](https://img.shields.io/github/downloads/davidvidmar/crycker/total?style=for-the-badge)
+![GitHub Releases](https://img.shields.io/github/downloads/davidvidmar/Crycker/latest/total?style=for-the-badge)
+
 Hey, you people that are contantly checking Bitcoin and other crypto currency prices on mobile or PC during meetings. You think we don't see you? We do!
 
 Here is a gift for you!
