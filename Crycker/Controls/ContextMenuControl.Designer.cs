@@ -328,7 +328,7 @@
             // 
             // doubleWidthToolStripMenuItem
             // 
-            this.doubleWidthToolStripMenuItem.Enabled = false;
+            this.doubleWidthToolStripMenuItem.Visible = false;
             this.doubleWidthToolStripMenuItem.Name = "doubleWidthToolStripMenuItem";
             this.doubleWidthToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.doubleWidthToolStripMenuItem.Text = "Double Width Icons";
