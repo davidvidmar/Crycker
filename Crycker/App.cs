@@ -28,7 +28,7 @@ namespace Crycker
             tickerController = new TickerController(settings.Provider, settings.Coin, settings.Currency, settings.RefreshInterval);
             tickerController.DataUpdated += DataUpdated;
 
-            InitializeComponent(settings);            
+            InitializeComponent(settings);
         }
 
         private async void DataUpdated(object sender, TickerEventArgs e)
@@ -64,7 +64,7 @@ namespace Crycker
                 catch (Exception ex)
                 {
                     Logger.Error($"Update check failed: {ex.Message}");
-                }                                
+                }
             }
         }
 
@@ -111,7 +111,7 @@ namespace Crycker
             TrayIcon.Click += TrayIcon_Click;
             TrayIcon.DoubleClick += TrayIcon_DoubleClick;
 
-            TrayIcon.Visible = true;        
+            TrayIcon.Visible = true;
         }
 
 
@@ -132,7 +132,7 @@ namespace Crycker
             contextMenuControl.SetValidCurrencies(tickerController.SupportedCurrencies);
             contextMenuControl.SetValidCoins(tickerController.SupportedCoins);
             
-            tickerController.UpdateData();            
+            tickerController.UpdateData();
 
             var settings = UserSettings.Load();
             settings.Provider = e.Value;
@@ -141,7 +141,7 @@ namespace Crycker
 
         private void ContextMenuControl_CoinChanged(object sender, StringEventArgs e)
         {
-            tickerController.SetCoin(e.Value);            
+            tickerController.SetCoin(e.Value);
             tickerController.UpdateData();
 
             var settings = UserSettings.Load();
