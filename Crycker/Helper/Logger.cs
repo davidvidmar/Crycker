@@ -8,7 +8,7 @@ namespace Crycker.Helper
 {
     public static class Logger
     {
-        private static string logFilename = "cryker-log.txt";
+        private static string logFilename = "crycker-log.txt";
 
         private static bool _enabled;
         public static bool Enabled {
