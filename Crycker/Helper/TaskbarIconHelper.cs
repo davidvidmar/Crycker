@@ -52,7 +52,9 @@ namespace Crycker.Helper
                 }
             }
 
-            using (var bitmap = new Bitmap(16, 16))
+            // Get the systray icon size (because of DPI)
+            var size = SystemInformation.SmallIconSize;
+            using (var bitmap = new Bitmap(size.Width, size.Height))
             using (var graphics = Graphics.FromImage(bitmap))
             {
                 // graphics.FillRectangle(Brushes.White, new Rectangle(0, 0, 16, 16));
