@@ -1,0 +1,33 @@
+{
+  "apiConfiguration": {
+    "apiEntries": [
+      {
+        "name": "Bibi",
+        "key": "price",
+        "apiUrl": "https://api.binance.com/api/v3/avgPrice?symbol={0}",
+        "tickers": [
+          {
+            "name": "BTC - USDT",
+            "code": "BTCUSDT"
+          },
+          {
+            "name": "ETH - USDT",
+            "code": "ETHUSDT"
+          }
+        ]
+      }
+    ],
+    "selectedApi": {
+      "tickerName": "bibi ETH - USDT",
+      "tickerUrl": "https://api.binance.com/api/v3/avgPrice?symbol=ETHUSDT",
+      "tickerKey": "price"
+    },
+    "darkMode": true,
+    "refreshInterval": 300,
+    "checkForUpdates": true,
+    "percentageNotification": 2,
+    "fontName": "Segoe UI",
+    "fontSize": 7,
+    "fontBold": true
+  }
+}
