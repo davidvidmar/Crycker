@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<ProductVersion>5.0.0</ProductVersion>
+		<AssemblyVersion>5.0.0</AssemblyVersion>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ApplicationIcon>CryptoTray.ico</ApplicationIcon>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Update="api.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>api.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Controls\ContextMenuControl.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
+		<PackageReference Include="NLog.Extensions.Logging" Version="1.7.4" />
+		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+		<PackageReference Include="System.Text.Json" Version="5.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\CryptoTray\CryptoTray.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="api-entries.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="api.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>api.Designer.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+</Project>
