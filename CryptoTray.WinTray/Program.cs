@@ -21,10 +21,6 @@ namespace CryptoTray
         [STAThread]
         static void Main(string[] args)
         {
-            foreach (var arg in args)
-            {
-            }
-
             var services = new ServiceCollection();
             ConfigureServices(services);
             _logger = LogManager.GetCurrentClassLogger();
